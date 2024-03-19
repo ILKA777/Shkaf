@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "partialsheet",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AndreaMiotto/PartialSheet.git",
+      "state" : {
+        "revision" : "6c61890976181274ea7baf6a4c297418346db799",
+        "version" : "3.1.1"
+      }
+    },
+    {
+      "identity" : "swiftuix",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftUIX/SwiftUIX.git",
+      "state" : {
+        "revision" : "a5a22a1aaca885c229f475af049d75a6d9144de8",
+        "version" : "0.1.9"
+      }
+    }
+  ],
+  "version" : 2
+}
