@@ -33,6 +33,6 @@ struct DeliveryRow: View {
 }
 
 
-#Preview {
-    DeliveryRow(deliveryInfo: DeliveryInfo(cleintName: "Илья", clientSurname: "Морин", clientPhone: "+7(965)202-22-22", clientAddress: "Москва ул. Тверская д.4"))
-}
+//#Preview {
+//    DeliveryRow(deliveryInfo: DeliveryInfo(cleintName: "Илья", clientSurname: "Морин", clientPhone: "+7(965)202-22-22", clientAddress: "Москва ул. Тверская д.4"))
+//}

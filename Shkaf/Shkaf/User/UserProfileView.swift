@@ -9,6 +9,7 @@ import SwiftUI
 
 struct UserProfileView: View {
     @EnvironmentObject var favoritesManager: FavoritesManager
+    @EnvironmentObject var orderManager: OrderManager
     
     var body: some View {
         NavigationView {
@@ -47,7 +48,7 @@ struct UserProfileView: View {
                         .bold()
                         .padding()
                     
-                    NavigationLink(destination: MyPurchasesView()) {
+                    NavigationLink(destination: MyPurchasesView().environmentObject(orderManager)) {
                         HStack {
                             Text("мои покупки")
                                 .font(.system(size: 20))

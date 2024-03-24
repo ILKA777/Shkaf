@@ -43,6 +43,6 @@ struct OrderRow: View {
 
 
 
-#Preview {
-    OrderRow(order: Order(id: 111, total: 100, date: Date()))
-}
+//#Preview {
+//    OrderRow(order: Order(id: 111, total: 100, date: Date()))
+//}

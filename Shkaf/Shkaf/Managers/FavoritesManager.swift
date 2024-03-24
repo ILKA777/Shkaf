@@ -9,7 +9,7 @@ import Foundation
 
 class FavoritesManager: ObservableObject {
     @Published private(set) var products: [Product] = []
-    @Published private(set) var total: Int = 0
+    @Published private(set) var total: Double = 0.0
     
     func addToFavorites(product: Product) {
         products.append(product)

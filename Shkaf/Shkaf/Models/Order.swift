@@ -8,7 +8,9 @@
 import Foundation
 
 struct Order {
-    var id: Int
+    var id = UUID()
     var total: Double
+    var productList: [Product]
+    var deliveryInfo: DeliveryInfo
     var date: Date
 }

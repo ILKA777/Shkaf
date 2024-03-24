@@ -14,7 +14,10 @@ struct NewDeliveryInfoView: View {
     @State private var clientName = ""
     @State private var clientSurname = ""
     @State private var clientPhone = ""
+    @State private var clientEmail = ""
+    @State private var clientCity = ""
     @State private var clientAddress = ""
+    
     
     var body: some View {
         NavigationView {
@@ -22,12 +25,14 @@ struct NewDeliveryInfoView: View {
                 TextField("Имя клиента", text: $clientName)
                 TextField("Фамилия клиента", text: $clientSurname)
                 TextField("Телефон клиента", text: $clientPhone)
+                TextField("Почта клиента", text: $clientEmail)
+                TextField("Город доставки", text: $clientCity)
                 TextField("Адрес доставки", text: $clientAddress)
             }
             .navigationBarItems(leading: Button("Отмена") {
                 showModal = false
             }, trailing: Button("Сохранить") {
-                let newDelivery = DeliveryInfo(cleintName: clientName, clientSurname: clientSurname, clientPhone: clientPhone, clientAddress: clientAddress)
+                let newDelivery = DeliveryInfo(cleintName: clientName, clientSurname: clientSurname, clientPhone: clientPhone, clientEmail: clientEmail, clientCity: clientCity, clientAddress: clientAddress)
                 deliveries.append(newDelivery)
                 showModal = false
             })

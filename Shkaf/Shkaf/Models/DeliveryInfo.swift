@@ -12,5 +12,7 @@ struct DeliveryInfo: Identifiable {
     var cleintName: String
     var clientSurname: String
     var clientPhone: String
+    var clientEmail: String
+    var clientCity: String
     var clientAddress: String
 }

@@ -13,6 +13,14 @@ struct ProductCard: View {
     
     var product: Product
     
+    var priceFormatter: NumberFormatter = {
+            let formatter = NumberFormatter()
+            formatter.minimumFractionDigits = 0
+            formatter.maximumFractionDigits = 1
+            return formatter
+        }()
+    
+    var price = ""
     var body: some View {
         ZStack(alignment: .topTrailing) {
             ZStack(alignment: .bottom) {
@@ -25,8 +33,8 @@ struct ProductCard: View {
                     Text(product.name)
                         .bold()
                     
-                    Text("\(product.price) ₽")
-                        .font(.caption)
+                    Text(String(format: "%.1f ₽", product.price))
+                                            .font(.caption)
                 }
                 .padding()
                 .frame(width: 180, alignment: .leading)

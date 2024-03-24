@@ -7,15 +7,13 @@
 
 import SwiftUI
 
-struct TabBarView: View {
+struct TabBarViewModel: View {
     @StateObject var cartManager = CartManager()
+    @StateObject var orderManager = OrderManager()
     @StateObject var favoritesManager = FavoritesManager()
     @State private var showMenu = false
     
-//    init() {
-//        UITabBar.appearance().isHidden = true
-//    }
-    
+
     @State var currentTab = "Home"
     @State var offset: CGFloat = 0
     @State var lastStoredOffset: CGFloat = 0
@@ -30,6 +28,7 @@ struct TabBarView: View {
                 
                 SideMenu(showMenu: $showMenu)
                     .environmentObject(favoritesManager)
+                    .environmentObject(orderManager)
                 VStack(spacing: 0) {
                     TabView {
                         ProductsCatalogView(showMenu: $showMenu)
@@ -53,6 +52,7 @@ struct TabBarView: View {
                         
                         CartViewForTabBar()
                             .environmentObject(cartManager)
+                            .environmentObject(orderManager)
                             .tabItem {
                                 CartButton(numberOfProducts: cartManager.products.count)
                                 //Image(systemName: "cart")
@@ -64,6 +64,7 @@ struct TabBarView: View {
                         
                         UserProfileView()
                             .environmentObject(favoritesManager)
+                            .environmentObject(orderManager)
                             .tabItem {
                                 Image(systemName: "person.crop.circle")
                                 Text("Профиль")
@@ -144,6 +145,6 @@ struct TabBarView: View {
 
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarView()
+        TabBarViewModel()
     }
 }

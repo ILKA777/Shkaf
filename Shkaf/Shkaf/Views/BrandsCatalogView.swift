@@ -26,7 +26,6 @@ struct BrandsCatalogView: View {
                         .padding(.horizontal)
                 }
                 
-                
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
                         ForEach(brandList.filter {

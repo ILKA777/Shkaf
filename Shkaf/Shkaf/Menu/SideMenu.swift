@@ -11,6 +11,7 @@ struct SideMenu: View {
     @Binding var showMenu: Bool
     @State private var showFavorites = false
     @EnvironmentObject var favoritesManager: FavoritesManager
+    @EnvironmentObject var orderManager: OrderManager
     
     
     var body: some View {
@@ -63,7 +64,7 @@ struct SideMenu: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
-                    NavigationLink(destination: MyPurchasesView()) {
+                    NavigationLink(destination: MyPurchasesView().environmentObject(orderManager)) {
                         HStack(spacing: 14) {
                             Image(systemName: "handbag")
                                 .resizable()

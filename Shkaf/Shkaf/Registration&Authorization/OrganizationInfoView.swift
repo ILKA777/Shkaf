@@ -17,8 +17,6 @@ struct OrganizationInfoView: View {
     @State private var region: String = ""
     @State private var organizationName: String = ""
     @State private var productCategoryName: String = ""
-    @State private var email: String = ""
-    @State private var password: String = ""
     @State private var isMale = true
     
     @State private var isSellerRegistrationViewPresented = false
