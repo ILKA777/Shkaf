@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TabBarViewModel: View {
+struct BuyerTabBarViewModel: View {
     @StateObject var cartManager = CartManager()
     @StateObject var orderManager = OrderManager()
     @StateObject var favoritesManager = FavoritesManager()
@@ -145,6 +145,6 @@ struct TabBarViewModel: View {
 
 struct TabBarView_Previews: PreviewProvider {
     static var previews: some View {
-        TabBarViewModel()
+        BuyerTabBarViewModel()
     }
 }

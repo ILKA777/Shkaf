@@ -21,7 +21,7 @@ struct ProductRow: View {
                 .cornerRadius(10)
             
             VStack(alignment: .leading, spacing: 10) {
-                Text(product.categoty)
+                Text(product.category)
                                .font(.caption)
                                .foregroundColor(.gray)
                 Text(product.name)

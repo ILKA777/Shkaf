@@ -10,9 +10,10 @@ import SwiftUI
 struct SellerLoginView: View {
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var isTabBarViewActive = false
     
     var body: some View {
-        NavigationView {
+        //NavigationView {
             VStack(alignment: .center) {
                 Text("Войти как продавец")
                     .font(.largeTitle)
@@ -42,9 +43,13 @@ struct SellerLoginView: View {
                 
                 // Spacer()
                 
+                NavigationLink(destination: SellerTabBarViewModel().navigationBarHidden(true), isActive: $isTabBarViewActive) {
+                    EmptyView()
+                }
                 Button(action: {
                     // Действие при нажатии кнопки "Войти"
-                    print("Войти")
+                    print("вошел")
+                   isTabBarViewActive = true
                 }) {
                     Text("Войти")
                         .font(.headline)
@@ -54,21 +59,15 @@ struct SellerLoginView: View {
                         .background(Color(uiColor: .CustomGreen()))
                         .cornerRadius(10)
                         .frame(height: 50)
-                        .offset(y: 30)
-                        .offset(y: -200)
+                        
                 }
+                .offset(y: 30)
+                .offset(y: -200)
             }
             .padding()
         }
-    }
+    //}
 }
-
-struct SellerLoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        SellerLoginView()
-    }
-}
-
 
 #Preview {
     SellerLoginView()

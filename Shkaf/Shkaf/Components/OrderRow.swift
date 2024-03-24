@@ -23,6 +23,7 @@ struct OrderRow: View {
                 .font(.system(size: 18))
                 .bold()
                 
+            
                 
             Text("Стоимость: \(order.total, specifier: "%.2f") руб.")
                 .font(.system(size: 16))
@@ -44,5 +45,5 @@ struct OrderRow: View {
 
 
 //#Preview {
-//    OrderRow(order: Order(id: 111, total: 100, date: Date()))
+//    OrderRow(order: Order(total: 100, date: Date()))
 //}

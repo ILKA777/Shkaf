@@ -41,7 +41,7 @@ struct LoginView: View {
                 .offset(y: -200)
                 .ignoresSafeArea(.keyboard, edges: .all)
             
-            NavigationLink(destination: TabBarViewModel().navigationBarHidden(true), isActive: $isTabBarViewActive) {
+            NavigationLink(destination: BuyerTabBarViewModel().navigationBarHidden(true), isActive: $isTabBarViewActive) {
                 EmptyView()
             }
             

@@ -1,14 +1,15 @@
 //
-//  ProductRowFavorites.swift
+//  ProductRowForOrders.swift
 //  Shkaf
 //
-//  Created by Илья on 03.03.2024.
+//  Created by Илья on 24.03.2024.
 //
 
 import SwiftUI
-struct ProductRowFavorites: View {
+
+struct ProductRowForOrders: View {
     
-    @EnvironmentObject var favoritesManager: FavoritesManager
+    @EnvironmentObject var cartManager: CartManager
     var product: Product
     
     var body: some View {
@@ -24,25 +25,17 @@ struct ProductRowFavorites: View {
                                .font(.caption)
                                .foregroundColor(.gray)
                 Text(product.name)
+                    .foregroundColor(.black)
                     .bold()
                 
                 Text("\(product.price) ₽")
+                    .foregroundColor(.black)
             }
             
             Spacer()
             
-            Image(systemName: "trash")
-                .foregroundColor(Color(hue: 1.0, saturation: 0.89, brightness: 0.835))
-                .onTapGesture {
-                    favoritesManager.removeFromFavorites(product: product)
-                }
         }
         .padding(.horizontal)
         .frame(maxWidth: .infinity, alignment: .leading)
     }
-}
-
-#Preview {
-    ProductRow(product: productList[3])
-        .environmentObject(FavoritesManager())
 }

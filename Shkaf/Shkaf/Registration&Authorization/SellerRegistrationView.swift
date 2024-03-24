@@ -10,6 +10,7 @@ import SwiftUI
 struct SellerRegistrationView: View {
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var isTabBarViewActive = false
     
     var body: some View {
         VStack(alignment: .center) {
@@ -38,9 +39,11 @@ struct SellerRegistrationView: View {
             
             // Spacer()
             
+            NavigationLink(destination: SellerTabBarViewModel().navigationBarHidden(true), isActive: $isTabBarViewActive) {
+                EmptyView()
+            }
             Button(action: {
-                // Действие при нажатии кнопки "Войти"
-                print("Войти")
+                isTabBarViewActive = true
             }) {
                 Text("Войти")
                     .font(.headline)
