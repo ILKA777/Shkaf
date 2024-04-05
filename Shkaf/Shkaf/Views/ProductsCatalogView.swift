@@ -9,13 +9,13 @@ import SwiftUI
 
 struct ProductsCatalogView: View {
     @EnvironmentObject var cartManager: CartManager
+    @EnvironmentObject var orderManager: OrderManager
     @EnvironmentObject var favoritesManager: FavoritesManager
     @Binding var showMenu: Bool
     
-    @State private var isShowingProductDetail = false
-    @State private var selectedProduct: Product?
     @State private var isShowingSearch = false // To toggle search bar visibility
     @State private var searchText = "" // To hold the search text
+    @State private var selectedProduct: Product? // Track selected product for navigation
     
     var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
     
@@ -38,16 +38,11 @@ struct ProductsCatalogView: View {
                         ForEach(productList.filter {
                             searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchText)
                         }, id: \.id) { product in
-                            ProductCard(product: product)
-                                .onTapGesture {
-                                    selectedProduct = product
-                                    isShowingProductDetail = true
-                                }
-                                .sheet(item: $selectedProduct) { product in
-                                    ProductDetailView(product: product, isPresented: $isShowingProductDetail)
-                                }
-                                .environmentObject(cartManager)
-                                .environmentObject(favoritesManager)
+                            NavigationLink(destination: ProductDetailView(product: product)) {
+                                ProductCard(product: product)
+                            }
+                            .environmentObject(cartManager)
+                            .environmentObject(favoritesManager)
                         }
                     }
                     .padding()
@@ -71,11 +66,10 @@ struct ProductsCatalogView: View {
                             .imageScale(.large)
                     }
                     
-                    NavigationLink {
-                        CartView()
-                            .environmentObject(cartManager)
-                    } label: {
-                        CartButton(numberOfProducts: cartManager.products.count)
+                    NavigationLink(destination: CartView()
+                        .environmentObject(cartManager)
+                        .environmentObject(OrderViewModel(cartManager: cartManager, orderManager: orderManager))) {
+                        CartButton(numberOfProducts: cartManager.totalCount)
                     }
                 }
             }

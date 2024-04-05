@@ -31,8 +31,8 @@ struct SellerOrderRow: View {
                     .bold()
                     .padding(.bottom, 4)
                 
-                ForEach(order.productList) { product in
-                    Text("\(product.name): \(product.price, specifier: "%.2f") руб.")
+                ForEach(order.productList) { productWithQuantity in
+                    Text("\(productWithQuantity.product.name): \(productWithQuantity.product.price, specifier: "%.2f") руб.")
                         .font(.system(size: 14))
                         .foregroundColor(.black)
                 }
@@ -84,7 +84,7 @@ struct SellerOrderRow_Previews: PreviewProvider {
         
         let mockDeliveryInfo = DeliveryInfo(cleintName: "John", clientSurname: "Doe", clientPhone: "123456789", clientEmail: "john@example.com", clientCity: "City", clientAddress: "Address")
         
-        let mockOrder = Order( total: 30.0, productList: [mockProduct1, mockProduct2], deliveryInfo: mockDeliveryInfo, date: Date())
+        let mockOrder = Order( total: 30.0, productList: [ProductWithQuantity(product: mockProduct1, quantity: 1), ProductWithQuantity(product: mockProduct2, quantity: 2)], deliveryInfo: mockDeliveryInfo, date: Date())
         
         return SellerOrderRow(order: mockOrder)
             .previewLayout(.fixed(width: 400, height: 200))

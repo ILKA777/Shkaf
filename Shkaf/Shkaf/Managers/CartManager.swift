@@ -8,21 +8,67 @@
 import Foundation
 
 class CartManager: ObservableObject {
-    @Published private(set) var products: [Product] = []
+    @Published private(set) var products: [ProductWithQuantity] = []
     @Published private(set) var total: Double = 0.0
+    @Published private(set) var totalCount: Int = 0
     
     func addToCart(product: Product) {
-        products.append(product)
-        total += product.price
+        if let index = products.firstIndex(where: { $0.product.id == product.id }) {
+            // Increase quantity if the product is already in the cart
+            products[index].quantity += 1
+        } else {
+            // Add new product to cart with quantity 1
+            products.append(ProductWithQuantity(product: product, quantity: 1))
+        }
+        
+        recalculateTotal()
     }
     
     func removeFromCart(product: Product) {
-        products = products.filter { $0.id != product.id }
-        total -= product.price
+        if let index = products.firstIndex(where: { $0.product.id == product.id }) {
+            // Decrease quantity or remove the product if quantity becomes zero
+            if products[index].quantity > 1 {
+                products[index].quantity -= 1
+            } else {
+                products.remove(at: index)
+            }
+            
+            recalculateTotal()
+        }
     }
     
     func clearCart() {
         products.removeAll()
         total = 0.0
     }
+    
+    private func recalculateTotal() {
+        total = products.reduce(0.0) { $0 + ($1.product.price * Double($1.quantity)) }
+        totalCount = products.reduce(0) { $0 + $1.quantity }
+    }
+    
+    func quantity(for product: Product) -> Int {
+        if let item = products.first(where: { $0.product.id == product.id }) {
+            return item.quantity
+        }
+        return 0
+    }
+    
+    func decreaseQuantity(product: Product) {
+            if let index = products.firstIndex(where: { $0.product.id == product.id && $0.quantity > 0 }) {
+                // Decrease quantity
+                products[index].quantity -= 1
+                if products[index].quantity == 0 {
+                    products.remove(at: index)
+                }
+                
+                recalculateTotal()
+            }
+        }
+}
+
+struct ProductWithQuantity: Identifiable {
+    let id = UUID()
+    let product: Product
+    var quantity: Int
 }

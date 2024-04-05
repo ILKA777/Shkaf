@@ -53,8 +53,9 @@ struct BuyerTabBarViewModel: View {
                         CartViewForTabBar()
                             .environmentObject(cartManager)
                             .environmentObject(orderManager)
+                            .environmentObject(OrderViewModel(cartManager: cartManager, orderManager: orderManager))
                             .tabItem {
-                                CartButton(numberOfProducts: cartManager.products.count)
+                                CartButton(numberOfProducts: cartManager.totalCount)
                                 //Image(systemName: "cart")
                                 Text("Корзина")
                                 
@@ -148,3 +149,4 @@ struct TabBarView_Previews: PreviewProvider {
         BuyerTabBarViewModel()
     }
 }
+ 

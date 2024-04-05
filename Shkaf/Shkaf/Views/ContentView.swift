@@ -16,87 +16,98 @@ struct ContentView: View {
     
 
     var body: some View {
-        NavigationView {
-            ZStack {
-                
-                if showSplash {
-                    SplashScreenView()
-                        .transition(.opacity)
-                        .animation(.easeInOut(duration: 1.5))
-                } else {
-                    Color.black.edgesIgnoringSafeArea(.all)
+        
+        if UserManager.shared.isLoggedIn() {
+            
+            BuyerTabBarViewModel()
+                .environmentObject(CartManager())
+                .environmentObject(OrderManager())
+                .environmentObject(FavoritesManager())
+        } else {
+            
+            NavigationView {
+                ZStack {
+                    
+                    if showSplash {
+                        SplashScreenView()
+                            .transition(.opacity)
+                            .animation(.easeInOut(duration: 1.5))
+                    } else {
+                        Color.black.edgesIgnoringSafeArea(.all)
 
-                    VStack {
-                        Spacer()
+                        VStack {
+                            Spacer()
 
-                        Image("ShkafLogo")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 200, height: 200)
+                            Image("ShkafLogo")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 200, height: 200)
 
-                        Spacer()
+                            Spacer()
 
-                        NavigationLink(destination: LoginView(), isActive: $isLoginViewPresented) {
-                            EmptyView()
-                        }
-                        Button(action: {
-                            withAnimation {
-                                isLoginViewPresented.toggle()
+                            NavigationLink(destination: LoginView(), isActive: $isLoginViewPresented) {
+                                EmptyView()
                             }
-                            print("Войти")
-                        }) {
-                            Text("Войти")
-                                .foregroundColor(.white)
-                                .frame(width: 300, height: 15)
-                                .padding()
-                                .background(.gray)
-                                .cornerRadius(10)
-                        }
-
-                        NavigationLink(destination: RegistrationView(), isActive: $isRegistrationViewPresented) {
-                            EmptyView()
-                        }
-                        Button(action: {
-                            withAnimation {
-                                isRegistrationViewPresented.toggle()
+                            Button(action: {
+                                withAnimation {
+                                    isLoginViewPresented.toggle()
+                                }
+                                print("Войти")
+                            }) {
+                                Text("Войти")
+                                    .foregroundColor(.white)
+                                    .frame(width: 300, height: 15)
+                                    .padding()
+                                    .background(.gray)
+                                    .cornerRadius(10)
                             }
-                        }) {
-                            Text("Зарегистрироваться")
-                                .foregroundColor(.black)
-                                .frame(width: 300, height: 15)
-                                .padding()
-                                .background(Color(uiColor: .CustomGreen()))
-                                .cornerRadius(10)
-                        }
-                        .padding()
 
-                        NavigationLink(destination: SellerLoginView(), isActive: $isSellerLoginViewPresented) {
-                            EmptyView()
-                        }
-                        Button(action: {
-                            withAnimation {
-                                isSellerLoginViewPresented.toggle()
+                            NavigationLink(destination: RegistrationView(), isActive: $isRegistrationViewPresented) {
+                                EmptyView()
                             }
-                        }) {
-                            Text("Я продавец")
-                                .foregroundColor(.white)
-                                .frame(width: 300, height: 15)
-                                .padding()
-                                .cornerRadius(10)
+                            Button(action: {
+                                withAnimation {
+                                    isRegistrationViewPresented.toggle()
+                                }
+                            }) {
+                                Text("Зарегистрироваться")
+                                    .foregroundColor(.black)
+                                    .frame(width: 300, height: 15)
+                                    .padding()
+                                    .background(Color(uiColor: .CustomGreen()))
+                                    .cornerRadius(10)
+                            }
+                            .padding()
+
+                            NavigationLink(destination: SellerLoginView(), isActive: $isSellerLoginViewPresented) {
+                                EmptyView()
+                            }
+                            Button(action: {
+                                withAnimation {
+                                    isSellerLoginViewPresented.toggle()
+                                }
+                            }) {
+                                Text("Я продавец")
+                                    .foregroundColor(.white)
+                                    .frame(width: 300, height: 15)
+                                    .padding()
+                                    .cornerRadius(10)
+                            }
                         }
                     }
+                   
                 }
-               
-            }
-            .navigationBarHidden(true)
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    withAnimation {
-                        self.showSplash = false
+                .navigationBarHidden(true)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        withAnimation {
+                            self.showSplash = false
+                        }
                     }
                 }
             }
         }
+        
     }
 }
 

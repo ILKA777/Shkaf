@@ -16,12 +16,12 @@ struct OrderView: View {
             VStack(alignment: .leading) {
                 // Cart section
                 if viewModel.cartManager.products.count > 0 {
-                    Text("Your Cart:")
+                    Text("Ваш заказ:")
                         .font(.headline)
                         .padding(.bottom)
                     
-                    ForEach(viewModel.cartManager.products) { product in
-                        ProductRow(product: product)
+                    ForEach(viewModel.cartManager.products) { productWithQuantity in
+                        ProductRow(productWithQuantity: productWithQuantity)
                     }
                     .padding(.bottom)
                 } else {
@@ -30,7 +30,7 @@ struct OrderView: View {
                 }
                 
                 // Customer information section
-                Text("Customer Information:")
+                Text("Информация о доставке:")
                     .font(.headline)
                     .padding(.bottom)
                 
@@ -64,11 +64,11 @@ struct OrderView: View {
                     viewModel.clearCart()
                     isPlacingOrder = false
                 }) {
-                    Text("Place Order")
+                    Text("Оформить заказ")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
-                        .background(Color.blue)
+                        .background(Color(uiColor: .CustomGreen()))
                         .cornerRadius(8)
                 }
                 .padding(.bottom)

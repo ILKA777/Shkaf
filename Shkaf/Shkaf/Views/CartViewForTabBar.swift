@@ -17,14 +17,14 @@ struct CartViewForTabBar: View {
         NavigationView {
             ScrollView {
                 if cartManager.products.count > 0 {
-                    ForEach(cartManager.products, id: \.id) { product in
-                        ProductRow(product: product)
+                    ForEach(cartManager.products, id: \.id) { productWithQuantity in
+                        ProductRow(productWithQuantity: productWithQuantity)
                     }
                     
                     HStack {
-                        Text("Your cart total is")
+                        Text("Итого")
                         Spacer()
-                        Text("\(cartManager.total).00 ₽")
+                        Text("\(cartManager.total.formattedPrice) ₽")
                             .bold()
                     }
                     .padding()

@@ -48,12 +48,27 @@ extension PaymentButton {
                 self.action = action
                 super.init()
                 
-                button.addTarget(self, action: #selector(callback(_:)), for: .touchUpInside)
+                button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
             }
             
             @objc
             func callback(_ sender: Any) {
                 action()
+            }
+            
+            @objc
+            func showAlert(_ sender: UIButton) {
+                let alert = UIAlertController(title: "Внимание!", message: "Функция оплаты через ApplePay будет доступна позже", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    // Handle OK button action if needed
+                }))
+                
+                // Find the topmost view controller to present the alert
+                if let topViewController = UIApplication.shared.windows.first?.rootViewController {
+                    topViewController.present(alert, animated: true, completion: nil)
+                }
+                
+                action() // Perform the action associated with the PaymentButton
             }
         }
     }

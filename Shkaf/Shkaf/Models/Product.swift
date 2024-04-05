@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Product: Identifiable {
+struct Product: Identifiable, Decodable, Encodable {
     var id = UUID()
     var category: String
     var name: String

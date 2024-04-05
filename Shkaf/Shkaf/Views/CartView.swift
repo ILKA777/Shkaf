@@ -9,11 +9,16 @@ import SwiftUI
 
 struct CartView: View {
     @EnvironmentObject var cartManager: CartManager
+    @EnvironmentObject var orderManager: OrderManager
+    @EnvironmentObject var orderViewModel: OrderViewModel
+    
+    @State private var isPlacingOrder = false
+    
     var body: some View {
         ScrollView {
             if cartManager.products.count > 0 {
-                ForEach(cartManager.products, id: \.id) {
-                    product in ProductRow(product: product)
+                ForEach(cartManager.products, id: \.id) { productWithQuantity in
+                    ProductRow(productWithQuantity: productWithQuantity) // Pass ProductWithQuantity to ProductRow
                 }
                 
                 HStack {
@@ -26,6 +31,24 @@ struct CartView: View {
                 
                 PaymentButton(action: {})
                     .padding()
+                
+                Button(action: {
+                    isPlacingOrder = true
+                }) {
+                    Text("Оформить заказ")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(8)
+                }
+                .padding()
+                .sheet(isPresented: $isPlacingOrder) {
+                    // Present the OrderView as a sheet
+                    OrderView(viewModel: orderViewModel, isPlacingOrder: $isPlacingOrder)
+                        .environmentObject(OrderViewModel(cartManager: cartManager, orderManager: orderManager))
+                }
+                
             } else {
                 Text("Ваша корзина пуста")
             }

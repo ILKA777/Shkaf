@@ -11,6 +11,8 @@ struct UserProfileView: View {
     @EnvironmentObject var favoritesManager: FavoritesManager
     @EnvironmentObject var orderManager: OrderManager
     
+    @State private var isActive: Bool = false
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
@@ -23,10 +25,10 @@ struct UserProfileView: View {
                         .clipShape(Circle())
                     
                     VStack(alignment: .leading) {
-                        Text("Имя")
+                        Text(UserManager.shared.currentUser.username ?? "Имя Фамилия")
                             .font(.headline)
-                        Text("Фамилия")
-                            .font(.subheadline)
+//                        Text("Фамилия")
+//                            .font(.subheadline)
                     }
                     
                     NavigationLink(destination: SettingsView()) {
@@ -105,7 +107,9 @@ struct UserProfileView: View {
                     }
                     .offset(y: -70)
                     
-                    NavigationLink(destination: ContentView()) {
+                    Button(action: {
+                        UserManager.shared.logout()
+                    }) {
                         HStack {
                             Text("Выйти из профиля")
                                 .font(.system(size: 20))

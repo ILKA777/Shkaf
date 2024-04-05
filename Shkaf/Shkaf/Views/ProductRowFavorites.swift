@@ -26,7 +26,7 @@ struct ProductRowFavorites: View {
                 Text(product.name)
                     .bold()
                 
-                Text("\(product.price) ₽")
+                Text("\(product.price.formattedPrice) ₽")
             }
             
             Spacer()
@@ -42,7 +42,7 @@ struct ProductRowFavorites: View {
     }
 }
 
-#Preview {
-    ProductRow(product: productList[3])
-        .environmentObject(FavoritesManager())
-}
+//#Preview {
+//    ProductRow(product: productList[3])
+//        .environmentObject(FavoritesManager())
+//}

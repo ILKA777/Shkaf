@@ -19,10 +19,14 @@
 		09084CE72BB021D7001E856A /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09084CE62BB021D7001E856A /* OrderManager.swift */; };
 		094EAA4D2B931CF4006F4399 /* BuyerTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094EAA4C2B931CF4006F4399 /* BuyerTabBarViewModel.swift */; };
 		094EAA502B93255E006F4399 /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094EAA4F2B93255E006F4399 /* KeyboardObserver.swift */; };
-		094EAA532B9327DD006F4399 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 094EAA522B9327DD006F4399 /* SwiftUIX */; };
+		0957EB5F2BB6AFFE00A8BD4A /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0957EB5E2BB6AFFE00A8BD4A /* AuthViewModel.swift */; };
 		095D369D2B74D8AD00CFC243 /* ProductsCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095D369C2B74D8AD00CFC243 /* ProductsCatalogView.swift */; };
 		095DE3962B97588E00AF6F21 /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095DE3952B97588E00AF6F21 /* SideMenu.swift */; };
 		096CB7732BA4536A0013159A /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096CB7722BA4536A0013159A /* ProductDetailView.swift */; };
+		0972EB8B2BB4389A0097235A /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972EB8A2BB4389A0097235A /* RegistrationViewModel.swift */; };
+		0972EB932BB441F70097235A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972EB922BB441F70097235A /* UserViewModel.swift */; };
+		0972EB952BB442270097235A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0972EB942BB442270097235A /* User.swift */; };
+		0972EBA02BB445A00097235A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0972EB9F2BB445A00097235A /* Alamofire */; };
 		09A7CA602B946BB1005AAA2E /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7CA5F2B946BB1005AAA2E /* UserProfileView.swift */; };
 		09A7CA622B946D4A005AAA2E /* MyPurchasesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7CA612B946D4A005AAA2E /* MyPurchasesView.swift */; };
 		09A7CA642B946ED7005AAA2E /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A7CA632B946ED7005AAA2E /* FavoritesView.swift */; };
@@ -36,8 +40,7 @@
 		09AB3C892BA9E5600023C0EB /* BrandsCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB3C882BA9E5600023C0EB /* BrandsCatalogView.swift */; };
 		09AB3C8B2BA9E5F90023C0EB /* BrandCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB3C8A2BA9E5F90023C0EB /* BrandCard.swift */; };
 		09AB3C8D2BA9E6790023C0EB /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AB3C8C2BA9E6790023C0EB /* Brand.swift */; };
-		09D72D642B8095A800AC588C /* PartialSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 09D72D632B8095A800AC588C /* PartialSheet */; };
-		09D72D662B80972400AC588C /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D72D652B80972400AC588C /* TestView.swift */; };
+		09BB7DD62BC00007005BB4E3 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09BB7DD52BC00007005BB4E3 /* UserManager.swift */; };
 		09D72D682B80984300AC588C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D72D672B80984300AC588C /* LoginView.swift */; };
 		09D72D6A2B80A26D00AC588C /* OrganizationInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D72D692B80A26D00AC588C /* OrganizationInfoView.swift */; };
 		09D72D6D2B80AD6F00AC588C /* SellerRegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D72D6C2B80AD6F00AC588C /* SellerRegistrationView.swift */; };
@@ -71,6 +74,19 @@
 		09E887B72BA70A6300E41A0B /* NewDeliveryInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E887B62BA70A6300E41A0B /* NewDeliveryInfoView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0972EB972BB443710097235A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		090354102B73C47400939225 /* CartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartButton.swift; sourceTree = "<group>"; };
 		090354122B73C57400939225 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
@@ -84,9 +100,14 @@
 		09084CE62BB021D7001E856A /* OrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
 		094EAA4C2B931CF4006F4399 /* BuyerTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerTabBarViewModel.swift; sourceTree = "<group>"; };
 		094EAA4F2B93255E006F4399 /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
+		0957EB5E2BB6AFFE00A8BD4A /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		095D369C2B74D8AD00CFC243 /* ProductsCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsCatalogView.swift; sourceTree = "<group>"; };
 		095DE3952B97588E00AF6F21 /* SideMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		096CB7722BA4536A0013159A /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
+		0972EB8A2BB4389A0097235A /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		0972EB8C2BB440280097235A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0972EB922BB441F70097235A /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		0972EB942BB442270097235A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		09A7CA5F2B946BB1005AAA2E /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
 		09A7CA612B946D4A005AAA2E /* MyPurchasesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPurchasesView.swift; sourceTree = "<group>"; };
 		09A7CA632B946ED7005AAA2E /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
@@ -100,7 +121,7 @@
 		09AB3C882BA9E5600023C0EB /* BrandsCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsCatalogView.swift; sourceTree = "<group>"; };
 		09AB3C8A2BA9E5F90023C0EB /* BrandCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCard.swift; sourceTree = "<group>"; };
 		09AB3C8C2BA9E6790023C0EB /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
-		09D72D652B80972400AC588C /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		09BB7DD52BC00007005BB4E3 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		09D72D672B80984300AC588C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		09D72D692B80A26D00AC588C /* OrganizationInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationInfoView.swift; sourceTree = "<group>"; };
 		09D72D6C2B80AD6F00AC588C /* SellerRegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerRegistrationView.swift; sourceTree = "<group>"; };
@@ -140,8 +161,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09D72D642B8095A800AC588C /* PartialSheet in Frameworks */,
-				094EAA532B9327DD006F4399 /* SwiftUIX in Frameworks */,
+				0972EBA02BB445A00097235A /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,7 +174,6 @@
 				09DAEB192B70F0AA0024E2FF /* ContentView.swift */,
 				090354122B73C57400939225 /* CartView.swift */,
 				095D369C2B74D8AD00CFC243 /* ProductsCatalogView.swift */,
-				09D72D652B80972400AC588C /* TestView.swift */,
 				09A7CA6F2B949078005AAA2E /* CartViewForTabBar.swift */,
 				09A7CA742B949465005AAA2E /* ProductRowFavorites.swift */,
 				096CB7722BA4536A0013159A /* ProductDetailView.swift */,
@@ -209,6 +228,7 @@
 				090354142B73C68200939225 /* CartManager.swift */,
 				09A7CA722B94930F005AAA2E /* FavoritesManager.swift */,
 				09084CE62BB021D7001E856A /* OrderManager.swift */,
+				09BB7DD52BC00007005BB4E3 /* UserManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -230,6 +250,9 @@
 			children = (
 				094EAA4C2B931CF4006F4399 /* BuyerTabBarViewModel.swift */,
 				09084CE22BB01BCC001E856A /* OrderViewModel.swift */,
+				0972EB8A2BB4389A0097235A /* RegistrationViewModel.swift */,
+				0972EB922BB441F70097235A /* UserViewModel.swift */,
+				0957EB5E2BB6AFFE00A8BD4A /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -253,6 +276,7 @@
 		09DAEB162B70F0AA0024E2FF /* Shkaf */ = {
 			isa = PBXGroup;
 			children = (
+				0972EB8C2BB440280097235A /* Info.plist */,
 				09DFBAAC2BB0399100D82E5B /* Seller */,
 				09D75AD62BAD8F7D00AE595D /* ViewModels */,
 				095DE3932B97587900AF6F21 /* Menu */,
@@ -289,6 +313,7 @@
 				09AB3C8C2BA9E6790023C0EB /* Brand.swift */,
 				09D75AD22BAD88E700AE595D /* Buyer.swift */,
 				09D75AD42BAD895D00AE595D /* Seller.swift */,
+				0972EB942BB442270097235A /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -337,6 +362,7 @@
 				09DAEB102B70F0AA0024E2FF /* Sources */,
 				09DAEB112B70F0AA0024E2FF /* Frameworks */,
 				09DAEB122B70F0AA0024E2FF /* Resources */,
+				0972EB972BB443710097235A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -344,8 +370,7 @@
 			);
 			name = Shkaf;
 			packageProductDependencies = (
-				09D72D632B8095A800AC588C /* PartialSheet */,
-				094EAA522B9327DD006F4399 /* SwiftUIX */,
+				0972EB9F2BB445A00097235A /* Alamofire */,
 			);
 			productName = Shkaf;
 			productReference = 09DAEB142B70F0AA0024E2FF /* Shkaf.app */;
@@ -376,8 +401,7 @@
 			);
 			mainGroup = 09DAEB0B2B70F0AA0024E2FF;
 			packageReferences = (
-				09D72D622B8095A800AC588C /* XCRemoteSwiftPackageReference "PartialSheet" */,
-				094EAA512B9327DD006F4399 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				0972EB9E2BB445A00097235A /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 09DAEB152B70F0AA0024E2FF /* Products */;
 			projectDirPath = "";
@@ -418,6 +442,7 @@
 				09A7CA622B946D4A005AAA2E /* MyPurchasesView.swift in Sources */,
 				09DFBAB02BB0443100D82E5B /* SellerOrderRow.swift in Sources */,
 				09D72D6D2B80AD6F00AC588C /* SellerRegistrationView.swift in Sources */,
+				0972EB932BB441F70097235A /* UserViewModel.swift in Sources */,
 				09A7CA732B94930F005AAA2E /* FavoritesManager.swift in Sources */,
 				09DFBAC02BB069DC00D82E5B /* MySalesView.swift in Sources */,
 				090354152B73C68200939225 /* CartManager.swift in Sources */,
@@ -436,6 +461,7 @@
 				09E887AA2BA6FBCC00E41A0B /* SplashScreenView.swift in Sources */,
 				09D72D682B80984300AC588C /* LoginView.swift in Sources */,
 				09084CE72BB021D7001E856A /* OrderManager.swift in Sources */,
+				0972EB8B2BB4389A0097235A /* RegistrationViewModel.swift in Sources */,
 				09DFBAC22BB06E7B00D82E5B /* SellerPaymentView.swift in Sources */,
 				094EAA4D2B931CF4006F4399 /* BuyerTabBarViewModel.swift in Sources */,
 				09DAEB272B70F2EA0024E2FF /* Product.swift in Sources */,
@@ -445,19 +471,21 @@
 				09A7CA702B949078005AAA2E /* CartViewForTabBar.swift in Sources */,
 				09A7CA662B946F7F005AAA2E /* NotificationsView.swift in Sources */,
 				0908408C2B7A5EE200959103 /* UIColor + Extension.swift in Sources */,
+				0957EB5F2BB6AFFE00A8BD4A /* AuthViewModel.swift in Sources */,
 				09A7CA752B949465005AAA2E /* ProductRowFavorites.swift in Sources */,
 				09DFBABA2BB0601E00D82E5B /* CreateProductView.swift in Sources */,
 				09A7CA682B946FF0005AAA2E /* DeliveryPaymentView.swift in Sources */,
 				09DFBAB42BB0489200D82E5B /* ProductRowForOrders.swift in Sources */,
 				09DFBAC42BB06EC100D82E5B /* PaymentDetailsView.swift in Sources */,
+				0972EB952BB442270097235A /* User.swift in Sources */,
 				09DFBABE2BB0668A00D82E5B /* SellerProfileView.swift in Sources */,
 				09DFBAB22BB0483000D82E5B /* OrderCompositionView.swift in Sources */,
 				09D72D6F2B80AEAA00AC588C /* SellerLoginView.swift in Sources */,
 				09A7CA602B946BB1005AAA2E /* UserProfileView.swift in Sources */,
 				09DFBAAB2BB02FAA00D82E5B /* SellerTabBarViewModel.swift in Sources */,
+				09BB7DD62BC00007005BB4E3 /* UserManager.swift in Sources */,
 				09D75AD52BAD895D00AE595D /* Seller.swift in Sources */,
 				09DAEB2A2B70F3BF0024E2FF /* ProductCard.swift in Sources */,
-				09D72D662B80972400AC588C /* TestView.swift in Sources */,
 				09D72D6A2B80A26D00AC588C /* OrganizationInfoView.swift in Sources */,
 				09084CE32BB01BCC001E856A /* OrderViewModel.swift in Sources */,
 				09084CE52BB01BE2001E856A /* OrderView.swift in Sources */,
@@ -599,6 +627,8 @@
 				DEVELOPMENT_TEAM = G5ZDRD88ZH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Shkaf/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Разрешите приложению доступ к камере для загрузки фото";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Разрешите приложению доступ к галереи для загрузки фото";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -631,6 +661,8 @@
 				DEVELOPMENT_TEAM = G5ZDRD88ZH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Shkaf/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Разрешите приложению доступ к камере для загрузки фото";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Разрешите приложению доступ к галереи для загрузки фото";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -676,34 +708,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		094EAA512B9327DD006F4399 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+		0972EB9E2BB445A00097235A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX.git";
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.9;
-			};
-		};
-		09D72D622B8095A800AC588C /* XCRemoteSwiftPackageReference "PartialSheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AndreaMiotto/PartialSheet.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.1;
+				minimumVersion = 5.9.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		094EAA522B9327DD006F4399 /* SwiftUIX */ = {
+		0972EB9F2BB445A00097235A /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 094EAA512B9327DD006F4399 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
-		09D72D632B8095A800AC588C /* PartialSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 09D72D622B8095A800AC588C /* XCRemoteSwiftPackageReference "PartialSheet" */;
-			productName = PartialSheet;
+			package = 0972EB9E2BB445A00097235A /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

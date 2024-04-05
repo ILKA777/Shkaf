@@ -140,7 +140,9 @@ struct SellerProfileView: View {
                     }
                     .offset(y: -70)
                     
-                    NavigationLink(destination: ContentView()) {
+                    Button(action: {
+                        //isActive = true
+                    }) {
                         HStack {
                             Text("Выйти из профиля")
                                 .font(.system(size: 20))

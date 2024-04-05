@@ -28,8 +28,8 @@ let mockProduct2 = Product(id: UUID(), category: "Одежда", name: "Футб
 let mockDeliveryInfo1 = DeliveryInfo(cleintName: "John", clientSurname: "Doe", clientPhone: "123456789", clientEmail: "john@example.com", clientCity: "City", clientAddress: "Address")
 let mockDeliveryInfo2 = DeliveryInfo(cleintName: "Jane", clientSurname: "Doe", clientPhone: "987654321", clientEmail: "jane@example.com", clientCity: "City", clientAddress: "Address")
 
-let mockOrder1 = Order(id: UUID(), total: 30.0, productList: [mockProduct1, mockProduct2], deliveryInfo: mockDeliveryInfo1, date: Date())
-let mockOrder2 = Order(id: UUID(), total: 50.0, productList: [mockProduct2], deliveryInfo: mockDeliveryInfo2, date: Date())
+let mockOrder1 = Order(id: UUID(), total: 30.0, productList: [ProductWithQuantity(product: mockProduct1, quantity: 1), ProductWithQuantity(product: mockProduct1, quantity: 2)], deliveryInfo: mockDeliveryInfo1, date: Date())
+let mockOrder2 = Order(id: UUID(), total: 50.0, productList: [ProductWithQuantity(product: mockProduct1, quantity: 2)], deliveryInfo: mockDeliveryInfo2, date: Date())
 
 // Create an instance of OrderManager
 

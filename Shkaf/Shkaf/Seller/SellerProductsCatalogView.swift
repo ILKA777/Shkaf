@@ -38,7 +38,7 @@ struct SellerProductsCatalogView: View {
                                     isShowingProductDetail = true
                                 }
                                 .sheet(item: $selectedProduct) { product in
-                                    ProductDetailView(product: product, isPresented: $isShowingProductDetail)
+                                    ProductDetailView(product: product)
                                 }
                         }
                     }

@@ -28,8 +28,8 @@ struct OrderCompositionView: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 10) {
-                ForEach(order.productList) { product in
-                    ProductRowForOrders(product: product)
+                ForEach(order.productList) { productWithQuantity in
+                    ProductRowForOrders(product: productWithQuantity.product)
                 }
                 
                 Text("Информация о доставке:")
@@ -109,7 +109,7 @@ struct OrderCompositionView_Previews: PreviewProvider {
         
         let mockDeliveryInfo = DeliveryInfo(cleintName: "John", clientSurname: "Doe", clientPhone: "123456789", clientEmail: "john@example.com", clientCity: "City", clientAddress: "Address")
         
-        let mockOrder = Order(total: 30.0, productList: [mockProduct1, mockProduct2], deliveryInfo: mockDeliveryInfo, date: Date())
+        let mockOrder = Order(total: 30.0, productList: [ProductWithQuantity(product: mockProduct1, quantity: 1), ProductWithQuantity(product: mockProduct2, quantity: 2)], deliveryInfo: mockDeliveryInfo, date: Date())
         
         return OrderCompositionView(order: mockOrder)
     }

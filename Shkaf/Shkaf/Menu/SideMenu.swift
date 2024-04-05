@@ -24,9 +24,9 @@ struct SideMenu: View {
                     .frame(width: 65, height: 65)
                     .clipShape(Circle())
                 
-                Text("имя фамилия")
+                Text(UserManager.shared.currentUser.username ?? "Имя Фамилия")
                     .font(.title2.bold())
-                Text("@ilka")
+                Text("@\(UserManager.shared.currentUser.username ?? "shkaf")")
                     .font(.callout)
                 
             }
