@@ -17,11 +17,26 @@ struct ProductDetailView: View {
     var body: some View {
         VStack(spacing: 20) {
             // Фотография товара
-            Image(product.image)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(height: 400)
-                .clipped() // Обрезаем изображение по размеру фрейма
+            AsyncImage(url: URL(string: product.image)!) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                                    .frame(height: 400)
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(height: 400)
+                                    .clipped()
+                            case .failure:
+                                Image(systemName: "ShkafLogo")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .foregroundColor(.gray)
+                                    .frame(height: 400)
+                                    .clipped()
+                            }
+                        }
             
             // Описание товара
             VStack(alignment: .leading, spacing: 10) {
@@ -93,7 +108,7 @@ public extension Double {
 
 struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailView(product: productList[6])
+        ProductDetailView(product: SellerProductsManager.shared.productList[6])
             .environmentObject(CartManager())
     }
 }

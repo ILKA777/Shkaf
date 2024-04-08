@@ -29,9 +29,6 @@ struct CartViewForTabBar: View {
                     }
                     .padding()
                     
-                    PaymentButton(action: {})
-                        .padding()
-                    
                     Button(action: {
                         isPlacingOrder = true
                     }) {

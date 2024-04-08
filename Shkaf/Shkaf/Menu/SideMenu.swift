@@ -119,7 +119,22 @@ struct SideMenu: View {
                         .foregroundColor(.primary)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    TabButton(title: "Выйти из аккаунта", image: "door.left.hand.open")
+                    
+                    Button(action: {
+                        UserManager.shared.logout()
+                        SessionManager.shared.logout()
+                        
+                    }) {
+                        HStack {
+                            Text("Выйти из профиля")
+                                .font(.system(size: 20))
+                                .foregroundColor(.red)
+                                .bold()
+                            Image(systemName: "door.left.hand.open")
+                                .foregroundColor(.red)
+                        }
+                        .padding()
+                    }
                     
                     
                 }

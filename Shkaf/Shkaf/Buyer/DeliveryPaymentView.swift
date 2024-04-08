@@ -13,11 +13,17 @@ struct DeliveryPaymentView: View {
     
     var body: some View {
         VStack {
-            ScrollView {
-                ForEach(deliveries) { deliveryInfo in
-                    DeliveryRow(deliveryInfo: deliveryInfo)
-                }
+            List(deliveries) { deliveryInfo in
+                DeliveryRow(deliveryInfo: deliveryInfo)
             }
+            .refreshable {
+                loadDeliveries()
+                    }
+            .onAppear {
+                // Загрузка данных при появлении представления
+                loadDeliveries()
+            }
+            
             
             Spacer()
         }
@@ -28,8 +34,18 @@ struct DeliveryPaymentView: View {
             Image(systemName: "plus")
         })
         .sheet(isPresented: $showingModal) {
-            NewDeliveryInfoView(showModal: $showingModal, deliveries: $deliveries)
+            NewDeliveryInfoView(showModal: $showingModal, didDismiss: {
+                // Обновление данных или перезагрузка представления после закрытия NewDeliveryInfoView
+                loadDeliveries()
+                    
+            })
         }
+    }
+    
+    private func loadDeliveries() {
+        // Загрузка данных о доставках
+        
+        deliveries = DeliveryInfoCoreDataManager.shared.fetchDeliveryInfo()
     }
 }
 

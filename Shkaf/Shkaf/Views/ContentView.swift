@@ -13,12 +13,12 @@ struct ContentView: View {
     @State private var isRegistrationViewPresented = false
     @State private var isLoginViewPresented = false
     @State private var isSellerLoginViewPresented = false
+    @EnvironmentObject var sessionManager: SessionManager
     
 
     var body: some View {
         
-        if UserManager.shared.isLoggedIn() {
-            
+        if sessionManager.isLoggedIn {
             BuyerTabBarViewModel()
                 .environmentObject(CartManager())
                 .environmentObject(OrderManager())

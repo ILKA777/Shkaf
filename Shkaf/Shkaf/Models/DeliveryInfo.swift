@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DeliveryInfo: Identifiable {
+struct DeliveryInfoMock: Identifiable {
     var id: UUID = UUID()
     var cleintName: String
     var clientSurname: String

@@ -109,6 +109,8 @@ struct UserProfileView: View {
                     
                     Button(action: {
                         UserManager.shared.logout()
+                        SessionManager.shared.logout()
+                        
                     }) {
                         HStack {
                             Text("Выйти из профиля")

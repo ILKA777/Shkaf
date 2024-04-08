@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="DeliveryInfo" representedClassName="DeliveryInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="clientAddress" optional="YES" attributeType="String"/>
+        <attribute name="clientCity" optional="YES" attributeType="String"/>
+        <attribute name="clientEmail" optional="YES" attributeType="String"/>
+        <attribute name="clientName" optional="YES" attributeType="String"/>
+        <attribute name="clientPhone" optional="YES" attributeType="String"/>
+        <attribute name="clientSurname" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="Entity1" representedClassName="Entity1" syncable="YES" codeGenerationType="class"/>
+</model>

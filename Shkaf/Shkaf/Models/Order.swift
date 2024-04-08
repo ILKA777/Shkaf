@@ -11,6 +11,6 @@ struct Order {
     var id = UUID()
     var total: Double
     var productList: [ProductWithQuantity]
-    var deliveryInfo: DeliveryInfo
+    var deliveryInfo: DeliveryInfoMock
     var date: Date
 }

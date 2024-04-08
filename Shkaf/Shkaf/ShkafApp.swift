@@ -12,6 +12,7 @@ struct ShkafApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(SessionManager())
         }
     }
 }

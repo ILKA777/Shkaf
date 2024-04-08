@@ -29,7 +29,7 @@ struct SellerProductsCatalogView: View {
                 
                 ScrollView {
                     LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(productList.filter {
+                        ForEach(SellerProductsManager.shared.productList.filter {
                             searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchText)
                         }, id: \.id) { product in
                             SellerProductCard(product: product, status: .forSale)
@@ -59,4 +59,5 @@ struct SellerProductsCatalogView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
+    
 }

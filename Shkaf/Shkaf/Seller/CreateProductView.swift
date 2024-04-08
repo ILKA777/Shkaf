@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct CreateProductView: View {
+    @State private var productCategory = ""
     @State private var productName = ""
+    @State private var productURL = ""
     @State private var productPrice = ""
     @State private var productDescription = ""
     @State private var selectedImage: Image?
@@ -58,14 +60,17 @@ struct CreateProductView: View {
                 ImagePicker(selectedImage: $selectedImage, isSourceSelectionSheetPresented: $isSourceSelectionSheetPresented, sourceType: sourceType)
             }
             
+            TextField("Категория товара", text: $productCategory)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            
             TextField("Название товара", text: $productName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
             
-            TextField("Стоимость товара до скидки", text: $productPrice)
+            TextField("Стоимость товара", text: $productPrice)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
             
-            TextField("Стоимость товара после скидки", text: $productPrice)
+            TextField("URL фотографии", text: $productURL)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.numberPad)
             
@@ -76,6 +81,8 @@ struct CreateProductView: View {
             Button(action: {
                 // Action to publish product
                 // Implement your logic here
+                let price = Double(productPrice) ?? 0.0
+                SellerProductsManager.shared.addProduct(category: productCategory, name: productName, description: productDescription, image: productURL, price: price)
             }) {
                 Text("Опубликовать товар")
                     .foregroundColor(.white)

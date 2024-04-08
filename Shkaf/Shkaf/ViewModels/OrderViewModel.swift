@@ -23,7 +23,7 @@ class OrderViewModel: ObservableObject {
     }
     
     func placeOrder() {
-        let deliveryInfo = DeliveryInfo(cleintName: clientName,
+        let deliveryInfo = DeliveryInfoMock(cleintName: clientName,
                                         clientSurname: clientSurname,
                                         clientPhone: clientPhone,
                                         clientEmail: clientEmail,

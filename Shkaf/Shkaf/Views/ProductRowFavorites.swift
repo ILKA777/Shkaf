@@ -13,11 +13,24 @@ struct ProductRowFavorites: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            Image(product.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 50)
-                .cornerRadius(10)
+            AsyncImage(url: URL(string: product.image)!) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .cornerRadius(10)
+                                    .frame(width: 50)
+                                    .scaledToFit()
+                            case .failure:
+                                Image("ShkafLogo")
+                                    .resizable()
+                                    .foregroundColor(.gray)
+                                    .cornerRadius(10)
+                                    .frame(width: 50)
+                            }
+                        }
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(product.category)

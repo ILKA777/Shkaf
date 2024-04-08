@@ -47,16 +47,20 @@ class AuthViewModel: ObservableObject {
                     if httpResponse.statusCode == 200 {
                         if let token = String(data: data, encoding: .utf8) {
                             // Сохраняем токен в UserDefaults
-//                            UserManager.init()
-//                            UserDefaults.standard.set(token, forKey: "userToken")
-//                            UserDefaults.standard.set(self.userName, forKey: "userName")
-//                            UserDefaults.standard.set(self.email, forKey: "email")
                             UserManager.shared.createUser(username: self.userName, email: self.email, userToken: token)
                             print(token)
                             print(self.userName)
                             // Устанавливаем isRegistrationSuccessful на главном потоке
                             self.isAuthSuccessful = true
+                            SessionManager.shared.login()
+                            
                         }
+                        
+                    } else if httpResponse.statusCode == 403 {
+                        // Показываем алерт с сообщением о неверных данных
+                        let alert = UIAlertController(title: "Ошибка", message: "Проверьте корректность введенных данных.", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
                     } else {
                         print("HTTP Response Error: \(httpResponse.statusCode)")
                     }

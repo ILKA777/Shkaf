@@ -29,11 +29,24 @@ struct SellerProductCard: View {
     var body: some View {
         ZStack(alignment: .topTrailing) {
             ZStack(alignment: .bottom) {
-                Image(product.image)
-                    .resizable()
-                    .cornerRadius(20)
-                    .frame(width: 180)
-                    .scaledToFit()
+                AsyncImage(url: URL(string: product.image)!) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView()
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .cornerRadius(20)
+                                        .frame(width: 180)
+                                        .scaledToFit()
+                                case .failure:
+                                    Image("ShkafLogo")
+                                        .resizable()
+                                        .foregroundColor(.gray)
+                                        .cornerRadius(20)
+                                        .frame(width: 180)
+                                }
+                            }
                 VStack(alignment: .leading) {
                     Text(product.name)
                         .bold()
@@ -77,7 +90,7 @@ struct SellerProductCard: View {
 
 struct SellerProductCard_Previews: PreviewProvider {
     static var previews: some View {
-        SellerProductCard(product: productList[0], status: .forSale)
+        SellerProductCard(product: SellerProductsManager.shared.productList[0], status: .forSale)
             .environmentObject(CartManager())
     }
 }

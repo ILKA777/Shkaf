@@ -14,11 +14,29 @@ struct ProductRowForOrders: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            Image(product.image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 50)
-                .cornerRadius(10)
+            AsyncImage(url: URL(string: product.image)!) { phase in
+                            switch phase {
+                            case .empty:
+                                ProgressView()
+                                    .frame(width: 50, height: 50)
+                                    .padding()
+                                    .background(Color.gray.opacity(0.3))
+                                    .cornerRadius(10)
+                            case .success(let image):
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 50)
+                                    .cornerRadius(10)
+                            case .failure:
+                                Image(systemName: "ShkafLogo")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .foregroundColor(.gray)
+                                    .frame(width: 50)
+                                    .cornerRadius(10)
+                            }
+                        }
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(product.category)

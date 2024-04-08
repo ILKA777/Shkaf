@@ -33,6 +33,7 @@ struct BuyerTabBarViewModel: View {
                     TabView {
                         ProductsCatalogView(showMenu: $showMenu)
                             .environmentObject(cartManager)
+                            .environmentObject(orderManager)
                             .environmentObject(favoritesManager)
                             .tabItem {
                                 Image(systemName: "magnifyingglass")

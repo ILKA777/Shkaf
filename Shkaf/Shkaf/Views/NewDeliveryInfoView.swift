@@ -9,8 +9,8 @@ import SwiftUI
 
 struct NewDeliveryInfoView: View {
     @Binding var showModal: Bool
-    @Binding var deliveries: [DeliveryInfo]
-    
+    //@Binding var deliveries: [DeliveryInfo]
+    var didDismiss: () -> Void
     @State private var clientName = ""
     @State private var clientSurname = ""
     @State private var clientPhone = ""
@@ -32,9 +32,11 @@ struct NewDeliveryInfoView: View {
             .navigationBarItems(leading: Button("Отмена") {
                 showModal = false
             }, trailing: Button("Сохранить") {
-                let newDelivery = DeliveryInfo(cleintName: clientName, clientSurname: clientSurname, clientPhone: clientPhone, clientEmail: clientEmail, clientCity: clientCity, clientAddress: clientAddress)
-                deliveries.append(newDelivery)
+                DeliveryInfoCoreDataManager.shared.saveDeliveryInfoToCoreData(clientName: clientName, clientSurname: clientSurname, clientPhone: clientPhone, clientEmail: clientEmail, clientCity: clientCity, clientAddress: clientAddress)
+//                DeliveryInfoCoreDataManager.shared.clearCoreData()
+                didDismiss()
                 showModal = false
+                
             })
             .navigationTitle("Адрес доставки")
         }

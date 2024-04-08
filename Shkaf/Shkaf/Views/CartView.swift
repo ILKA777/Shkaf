@@ -22,15 +22,12 @@ struct CartView: View {
                 }
                 
                 HStack {
-                    Text("Your cart total is")
+                    Text("Итого")
                     Spacer()
-                    Text("\(cartManager.total).00 ₽")
+                    Text("\(cartManager.total.formattedPrice) ₽")
                         .bold()
                 }
                 .padding()
-                
-                PaymentButton(action: {})
-                    .padding()
                 
                 Button(action: {
                     isPlacingOrder = true

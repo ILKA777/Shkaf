@@ -12,15 +12,15 @@ struct DeliveryRow: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("\(deliveryInfo.cleintName) \(deliveryInfo.clientSurname)")
+            Text((deliveryInfo.clientName ?? "Имя") + " " + (deliveryInfo.clientSurname ?? "Фамилия"))
                 .font(.system(size: 25))
                 .bold()
                 
-            Text("\(deliveryInfo.clientAddress)")
+            Text(deliveryInfo.clientAddress ?? "Адрес")
                 .font(.system(size: 22))
                 .bold()
                 
-            Text("\(deliveryInfo.clientPhone)")
+            Text(deliveryInfo.clientPhone ?? "Телефон")
                 .font(.system(size: 20))
                 .bold()
         }
