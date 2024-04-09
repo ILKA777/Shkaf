@@ -65,7 +65,8 @@ class SellerProductsManager: ObservableObject {
                 let products = try JSONDecoder().decode([ProductResponse].self, from: data)
                 DispatchQueue.main.async {
                     self.productList = products.map {
-                        Product(category: "Одежда",
+                        Product(localId: $0.id,
+                                category: "Одежда",
                                 name: $0.title,
                                 description: $0.description,
                                 image: $0.imageUrl,

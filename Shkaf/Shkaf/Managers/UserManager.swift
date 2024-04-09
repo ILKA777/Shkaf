@@ -14,7 +14,6 @@ class UserManager: ObservableObject {
     private enum UserDefaultsKeys {
         static let userToken = "userToken"
         static let username = "userName"
-        static let email = "email"
     }
     
     @Published var currentUser: User
@@ -22,25 +21,22 @@ class UserManager: ObservableObject {
     private init() {
         let storedToken = userDefaults.string(forKey: UserDefaultsKeys.userToken)
         let userName = userDefaults.string(forKey: UserDefaultsKeys.username)
-        let email = userDefaults.string(forKey: UserDefaultsKeys.email)
         
-        self.currentUser = User(username: userName, email: email, userToken: storedToken)
+        self.currentUser = User(username: userName, userToken: storedToken)
     }
     
-    func createUser(username: String, email: String, userToken: String) {
+    func createUser(username: String, userToken: String) {
         userDefaults.set(userToken, forKey: UserDefaultsKeys.userToken)
         userDefaults.set(username, forKey: UserDefaultsKeys.username)
-        userDefaults.set(email, forKey: UserDefaultsKeys.email)
         
-        self.currentUser = User(username: username, email: email, userToken: userToken)
+        self.currentUser = User(username: username, userToken: userToken)
     }
     
     func logout() {
         userDefaults.removeObject(forKey: UserDefaultsKeys.userToken)
         userDefaults.removeObject(forKey: UserDefaultsKeys.username)
-        userDefaults.removeObject(forKey: UserDefaultsKeys.email)
         
-        self.currentUser = User(username: nil, email: nil, userToken: nil)
+        self.currentUser = User(username: nil, userToken: nil)
     }
     
     func isLoggedIn() -> Bool {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum ProductStatus: String {
-    case forSale = "На продаже"
+    case forSale = "В продаже"
     case underModeration = "На модерации"
     case soldOut = "Снято с продажи"
 }

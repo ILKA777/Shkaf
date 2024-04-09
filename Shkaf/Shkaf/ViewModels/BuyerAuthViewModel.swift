@@ -9,7 +9,6 @@ import SwiftUI
 
 class BuyerAuthViewModel: ObservableObject {
     @Published var userName: String = ""
-    @Published var email: String = ""
     @Published var password: String = ""
     @Published var isAuthSuccessful = false
     
@@ -22,7 +21,6 @@ class BuyerAuthViewModel: ObservableObject {
         let parameters = [
             "username": userName,
             "password": password,
-            "email": email,
             "role": "CLIENT"
         ]
         
@@ -47,7 +45,7 @@ class BuyerAuthViewModel: ObservableObject {
                     if httpResponse.statusCode == 200 {
                         if let token = String(data: data, encoding: .utf8) {
                             // Сохраняем токен в UserDefaults
-                            UserManager.shared.createUser(username: self.userName, email: self.email, userToken: token)
+                            UserManager.shared.createUser(username: self.userName, userToken: token)
                             print(token)
                             print(self.userName)
                             // Устанавливаем isRegistrationSuccessful на главном потоке

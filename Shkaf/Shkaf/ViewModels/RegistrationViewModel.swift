@@ -70,7 +70,7 @@ class RegistrationViewModel: ObservableObject {
 //                            UserDefaults.standard.set(token, forKey: "userToken")
 //                            UserDefaults.standard.set(self.userName, forKey: "userName")
 //                            UserDefaults.standard.set(self.email, forKey: "email")
-                            UserManager.shared.createUser(username: self.userName, email: self.email, userToken: token)
+                            UserManager.shared.createUser(username: self.userName, userToken: token)
                             print(token)
                             // Устанавливаем isRegistrationSuccessful на главном потоке
                             self.isRegistrationSuccessful = true

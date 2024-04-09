@@ -9,6 +9,7 @@ import Foundation
 
 public struct Product: Identifiable, Decodable, Encodable {
     public var id = UUID()
+    var localId: Int?
     var category: String
     var name: String
     var description: String

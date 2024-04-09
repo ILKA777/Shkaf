@@ -36,16 +36,17 @@ struct SellerProductsCatalogView: View {
                 } else {
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(SellerProductsManager.shared.productList.filter {
-                                searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchText)
-                            }, id: \.id) { product in
-                                SellerProductCard(product: product, status: .forSale)
+                            ForEach(SellerProductsManager.shared.productList.indices, id: \.self) { index in
+                                let product = SellerProductsManager.shared.productList[index]
+                                let status = (index == SellerProductsManager.shared.productList.indices.last) ? ProductStatus.underModeration : ProductStatus.forSale
+                                
+                                SellerProductCard(product: product, status: status)
                                     .onTapGesture {
                                         selectedProduct = product
                                         isShowingProductDetail = true
                                     }
                                     .sheet(item: $selectedProduct) { product in
-                                        ProductDetailView(product: product)
+                                        SellerProductDetailView(product: product)
                                     }
                             }
                         }
