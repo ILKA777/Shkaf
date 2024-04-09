@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class AuthViewModel: ObservableObject {
+class BuyerAuthViewModel: ObservableObject {
     @Published var userName: String = ""
     @Published var email: String = ""
     @Published var password: String = ""

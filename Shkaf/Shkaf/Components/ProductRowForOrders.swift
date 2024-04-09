@@ -29,7 +29,7 @@ struct ProductRowForOrders: View {
                                     .frame(width: 50)
                                     .cornerRadius(10)
                             case .failure:
-                                Image(systemName: "ShkafLogo")
+                                Image("ShkafLogo")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .foregroundColor(.gray)

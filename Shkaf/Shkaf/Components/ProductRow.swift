@@ -20,15 +20,18 @@ struct ProductRow: View {
                             case .success(let image):
                                 image
                                     .resizable()
+                                    .aspectRatio(contentMode: .fit)
                                     .cornerRadius(10)
                                     .frame(width: 50)
-                                    .scaledToFit()
+                                    
                             case .failure:
                                 Image("ShkafLogo")
                                     .resizable()
+                                    .aspectRatio(contentMode: .fit)
                                     .foregroundColor(.gray)
                                     .cornerRadius(10)
                                     .frame(width: 50)
+                                   
                             }
                         }
             VStack(alignment: .leading, spacing: 10) {

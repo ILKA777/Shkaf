@@ -13,6 +13,7 @@ struct SellerProductsCatalogView: View {
     @State private var selectedProduct: Product?
     @State private var isShowingSearch = false
     @State private var searchText = ""
+    @State private var isLoading = false
     
     var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
     
@@ -27,22 +28,29 @@ struct SellerProductsCatalogView: View {
                         .padding(.horizontal)
                 }
                 
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(SellerProductsManager.shared.productList.filter {
-                            searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchText)
-                        }, id: \.id) { product in
-                            SellerProductCard(product: product, status: .forSale)
-                                .onTapGesture {
-                                    selectedProduct = product
-                                    isShowingProductDetail = true
-                                }
-                                .sheet(item: $selectedProduct) { product in
-                                    ProductDetailView(product: product)
-                                }
+                // Отображение индикатора активности при загрузке
+                if isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .padding()
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(SellerProductsManager.shared.productList.filter {
+                                searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchText)
+                            }, id: \.id) { product in
+                                SellerProductCard(product: product, status: .forSale)
+                                    .onTapGesture {
+                                        selectedProduct = product
+                                        isShowingProductDetail = true
+                                    }
+                                    .sheet(item: $selectedProduct) { product in
+                                        ProductDetailView(product: product)
+                                    }
+                            }
                         }
+                        .padding()
                     }
-                    .padding()
                 }
             }
             .navigationTitle(Text("Мои товары"))
@@ -56,8 +64,14 @@ struct SellerProductsCatalogView: View {
                     }
                 }
             }
+            .onAppear {
+                // Вызываем fetchProducts при загрузке SellerProductsCatalogView
+                isLoading = true
+                SellerProductsManager.shared.fetchProducts {
+                    isLoading = false
+                }
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
 }

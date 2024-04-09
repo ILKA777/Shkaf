@@ -1,13 +1,13 @@
 //
-//  ProductDetailView.swift
+//  SellerProductDetailView.swift
 //  Shkaf
 //
-//  Created by Илья on 15.03.2024.
+//  Created by Илья on 08.04.2024.
 //
 
 import SwiftUI
 
-struct ProductDetailView: View {
+struct SellerProductDetailView: View {
     var product: Product
     @State private var isCartViewPresented = false
     @EnvironmentObject var cartManager: CartManager
@@ -101,21 +101,12 @@ struct ProductDetailView: View {
             }
         }
     }
+    
 }
 
-public extension Double {
-    var formattedPrice: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-        formatter.minimumFractionDigits = 0
-        formatter.maximumFractionDigits = 1
-        return formatter.string(from: NSNumber(value: self)) ?? "\(self)"
-    }
-}
-
-struct ProductDetailView_Previews: PreviewProvider {
+struct SellerProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailView(product: SellerProductsManager.shared.productList[6])
+        SellerProductDetailView(product: SellerProductsManager.shared.productList[6])
             .environmentObject(CartManager())
     }
 }

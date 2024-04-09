@@ -17,6 +17,7 @@ struct SellerProductCard: View {
 
     var product: Product
     var status: ProductStatus
+    @State private var isLoading = false
     
     var priceFormatter: NumberFormatter = {
             let formatter = NumberFormatter()
@@ -73,6 +74,13 @@ struct SellerProductCard: View {
             }
                 
             
+        }
+        .onAppear {
+            // Вызываем fetchProducts при загрузке SellerProductsCatalogView
+            isLoading = true
+            SellerProductsManager.shared.fetchProducts {
+                isLoading = false
+            }
         }
     }
     

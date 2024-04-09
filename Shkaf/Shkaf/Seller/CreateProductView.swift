@@ -16,6 +16,7 @@ struct CreateProductView: View {
     @State private var selectedImage: Image?
     @State private var isImagePickerPresented = false
     @State private var isSourceSelectionSheetPresented = false
+    @State private var isProductPublished = false
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     
     
@@ -79,10 +80,9 @@ struct CreateProductView: View {
                 .overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.gray))
             
             Button(action: {
-                // Action to publish product
-                // Implement your logic here
                 let price = Double(productPrice) ?? 0.0
-                SellerProductsManager.shared.addProduct(category: productCategory, name: productName, description: productDescription, image: productURL, price: price)
+                publishProduct()
+                isProductPublished = true
             }) {
                 Text("Опубликовать товар")
                     .foregroundColor(.white)
@@ -91,12 +91,86 @@ struct CreateProductView: View {
                     .cornerRadius(10)
             }
             .padding(.horizontal)
+            .sheet(isPresented: $isProductPublished) {
+                VStack {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.system(size: 70))
+                        .foregroundColor(.green)
+                        .padding()
+
+                    Text("Ваш товар опубликован")
+                        .font(.headline)
+                        .padding(.bottom)
+
+                    Button("Закрыть", action: {
+                        isProductPublished = false
+                    })
+                    .padding()
+                    .foregroundColor(.blue)
+                }
+                .padding()
+            }
+
+
             
             Spacer()
         }
         .padding()
         .navigationTitle("Создание товара")
     }
+    
+    private func publishProduct() {
+            guard let url = URL(string: "http://localhost:8090/products/new") else {
+                print("Invalid URL")
+                return
+            }
+            
+            let price = Double(productPrice) ?? 0.0
+            
+            let productData: [String: Any] = [
+                "title": productName,
+                "seller": "Продавец", // Update with your seller identifier or name
+                "price": Int(productPrice) ?? 0,
+                "description": productDescription,
+                "imageUrl": productURL
+            ]
+            
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: productData) else {
+                print("Failed to serialize product data")
+                return
+            }
+            
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            // Set JWT token in the Authorization header
+        guard let userToken = UserManager.shared.currentUser.userToken else {
+            return
+        }
+        request.addValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
+            
+            request.httpBody = jsonData
+            
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                    return
+                }
+                
+                if let httpResponse = response as? HTTPURLResponse {
+                    print("HTTP Status Code: \(httpResponse.statusCode)")
+                    
+                    if httpResponse.statusCode == 200 {
+                        print("Product successfully published!")
+                        // Handle success action if needed
+                    } else {
+                        print("Failed to publish product. HTTP Status Code: \(httpResponse.statusCode)")
+                        // Handle failure action if needed
+                    }
+                }
+            }.resume()
+        }
 }
 
 struct CreateProductView_Previews: PreviewProvider {

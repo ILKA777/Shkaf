@@ -12,6 +12,7 @@ struct ProductsCatalogView: View {
     @EnvironmentObject var orderManager: OrderManager
     @EnvironmentObject var favoritesManager: FavoritesManager
     @Binding var showMenu: Bool
+    @State private var isLoading = false
     
     @State private var isShowingSearch = false // To toggle search bar visibility
     @State private var searchText = "" // To hold the search text
@@ -32,20 +33,25 @@ struct ProductsCatalogView: View {
                 
                 BrandsCarouselView()
                     .padding(.bottom)
-                
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(SellerProductsManager.shared.productList.filter {
-                            searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchText)
-                        }, id: \.id) { product in
-                            NavigationLink(destination: ProductDetailView(product: product)) {
-                                ProductCard(product: product)
+                if isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .padding()
+                } else {
+                    ScrollView {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(SellerProductsManager.shared.productList.filter {
+                                searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(searchText)
+                            }, id: \.id) { product in
+                                NavigationLink(destination: ProductDetailView(product: product)) {
+                                    ProductCard(product: product)
+                                }
+                                .environmentObject(cartManager)
+                                .environmentObject(favoritesManager)
                             }
-                            .environmentObject(cartManager)
-                            .environmentObject(favoritesManager)
                         }
+                        .padding()
                     }
-                    .padding()
                 }
             }
             .navigationTitle(Text("Shkaf"))
@@ -73,7 +79,15 @@ struct ProductsCatalogView: View {
                     }
                 }
             }
+            .onAppear {
+                // Вызываем fetchProducts при загрузке SellerProductsCatalogView
+                isLoading = true
+                SellerProductsManager.shared.fetchProducts {
+                    isLoading = false
+                }
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
+        
 }

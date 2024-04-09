@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
-    @StateObject private var viewModel = AuthViewModel()
+    @StateObject private var viewModel = BuyerAuthViewModel()
     @State private var isTabBarViewActive = false
     @State private var isPasswordVisible = false
     

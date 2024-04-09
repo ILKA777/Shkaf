@@ -39,7 +39,7 @@ struct ProductCard: View {
                                         .resizable()
                                         .foregroundColor(.gray)
                                         .cornerRadius(20)
-                                        .frame(width: 180, height: 180)
+                                        .frame(width: 180)
                                 }
                             }
                 VStack(alignment: .leading) {
