@@ -13,7 +13,6 @@ struct BuyerTabBarViewModel: View {
     @StateObject var favoritesManager = FavoritesManager()
     @State private var showMenu = false
     
-
     @State var currentTab = "Home"
     @State var offset: CGFloat = 0
     @State var lastStoredOffset: CGFloat = 0
@@ -38,11 +37,9 @@ struct BuyerTabBarViewModel: View {
                             .tabItem {
                                 Image(systemName: "magnifyingglass")
                                 Text("Главная")
-                                    
+                                
                             }
                             .tag("Home")
-                        
-                        // Tab 2
                         
                         FavoritesView()
                             .environmentObject(favoritesManager)
@@ -57,7 +54,6 @@ struct BuyerTabBarViewModel: View {
                             .environmentObject(OrderViewModel(cartManager: cartManager, orderManager: orderManager))
                             .tabItem {
                                 CartButton(numberOfProducts: cartManager.totalCount)
-                                //Image(systemName: "cart")
                                 Text("Корзина")
                                 
                                 
@@ -80,7 +76,7 @@ struct BuyerTabBarViewModel: View {
             .offset(x: offset > 0 ? offset : 0)
             
             .gesture(
-            
+                
                 DragGesture()
                     .updating($gestureOffset, body: {value, out, _ in out = value.translation.width
                     })
@@ -105,7 +101,6 @@ struct BuyerTabBarViewModel: View {
         .onChange(of: gestureOffset) { newValue in
             onChange()
         }
-        
     }
     
     func onChange() {
@@ -139,10 +134,8 @@ struct BuyerTabBarViewModel: View {
                 }
             }
         }
-        
         lastStoredOffset = offset
     }
-        
 }
 
 struct TabBarView_Previews: PreviewProvider {
@@ -150,4 +143,3 @@ struct TabBarView_Previews: PreviewProvider {
         BuyerTabBarViewModel()
     }
 }
- 

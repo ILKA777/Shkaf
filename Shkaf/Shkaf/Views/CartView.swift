@@ -18,7 +18,7 @@ struct CartView: View {
         ScrollView {
             if cartManager.products.count > 0 {
                 ForEach(cartManager.products, id: \.id) { productWithQuantity in
-                    ProductRow(productWithQuantity: productWithQuantity) // Pass ProductWithQuantity to ProductRow
+                    ProductRow(productWithQuantity: productWithQuantity)
                 }
                 
                 HStack {
@@ -41,11 +41,9 @@ struct CartView: View {
                 }
                 .padding()
                 .sheet(isPresented: $isPlacingOrder) {
-                    // Present the OrderView as a sheet
                     OrderView(viewModel: orderViewModel, isPlacingOrder: $isPlacingOrder)
                         .environmentObject(OrderViewModel(cartManager: cartManager, orderManager: orderManager))
                 }
-                
             } else {
                 Text("Ваша корзина пуста")
             }

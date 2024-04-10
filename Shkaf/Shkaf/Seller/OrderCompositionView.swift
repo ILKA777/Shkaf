@@ -35,7 +35,6 @@ struct OrderCompositionView: View {
                 Text("Информация о доставке:")
                     .font(.system(size: 20))
                     .foregroundColor(.black)
-                
                     .bold()
                     .padding(.top, 8)
                     .offset(x: -50, y: 20)
@@ -52,7 +51,6 @@ struct OrderCompositionView: View {
                 .offset(x: -70, y: 40)
                 .foregroundColor(.black)
                 
-                
                 Text("Стоимость: \(order.total, specifier: "%.2f") руб.")
                     .font(.system(size: 18))
                 
@@ -67,7 +65,6 @@ struct OrderCompositionView: View {
                     .padding(.bottom, 8)
                     .offset(x: -60, y: 50)
                 
-
                 HStack {
                     Text("Статус заказа:")
                         .font(.headline)
@@ -75,21 +72,16 @@ struct OrderCompositionView: View {
                     
                     Text(selectedStatus.rawValue)
                         .foregroundColor(.black)
-
                 }
                 .padding(.top, 60)
-                //.offset(x: -70)
                 
                 Picker("Изменить статус", selection: $selectedStatus) {
                     ForEach(OrderStatus.allCases, id: \.self) { status in
                         Text(status.rawValue).tag(status)
                     }
-                    
                 }
                 .accentColor(.black)
-                
                 .pickerStyle(MenuPickerStyle())
-                
                 .padding(.bottom, 20)
             }
             .padding()
@@ -104,8 +96,8 @@ struct OrderCompositionView: View {
 
 struct OrderCompositionView_Previews: PreviewProvider {
     static var previews: some View {
-        let mockProduct1 = Product(category: "Category 1", seller: "селлер", name: "Product 1", description: "Description 1", image: "https://downloader.disk.yandex.ru/preview/f9bffd2099a79590d458b9be471fcab276817a5df9bc4cade41d3d75940c6e76/6612cb4d/hPOLMzj86aniNSBCuAOjWT07SSht2zIZtM-CwvMCw-ft3korpWjUU1ZoIGwbxzPPA5iDHLA_BIRKlih-vHLI_w%3D%3D?uid=0&filename=sweater1.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&tknv=v2&size=2518x1308", price: 10.0)
-        let mockProduct2 = Product(category: "Category 2", seller: "селлер", name: "Product 2", description: "Description 2", image: "https://downloader.disk.yandex.ru/preview/de59096eed840821fe4616dd4e98ba1ae612250058e27d73982b84d96c52c9e8/6612cbdb/B3qUxxkBsRyrjMI6BcNeYALthpJLWzZikgCiY22uImR11CdVPsq9TmreJJAfjN9bLs3AtlKV9j9UqsIfO7PvAw%3D%3D?uid=0&filename=sweater2.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&tknv=v2&size=2048x2048", price: 20.0)
+        let mockProduct1 = Product(category: "Category 1", seller: "селлер", name: "Product 1", description: "Description 1", image: "https://www.charuel.ru/upload/iblock/ae9/jz6ig4g64nmzyb3te273r42k6opn3vu1.jpg", price: 10.0)
+        let mockProduct2 = Product(category: "Category 2", seller: "селлер", name: "Product 2", description: "Description 2", image: "https://ledysoveti.ru/wp-content/uploads/2021/10/5-modnyj-delovoj-stil-odezhdy-21.jpg", price: 20.0)
         
         let mockDeliveryInfo = DeliveryInfoMock(cleintName: "John", clientSurname: "Doe", clientPhone: "123456789", clientEmail: "john@example.com", clientCity: "City", clientAddress: "Address")
         
@@ -114,4 +106,3 @@ struct OrderCompositionView_Previews: PreviewProvider {
         return OrderCompositionView(order: mockOrder)
     }
 }
-

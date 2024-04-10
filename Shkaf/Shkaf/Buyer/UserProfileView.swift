@@ -27,8 +27,6 @@ struct UserProfileView: View {
                     VStack(alignment: .leading) {
                         Text(UserManager.shared.currentUser.username ?? "Имя Фамилия")
                             .font(.headline)
-//                        Text("Фамилия")
-//                            .font(.subheadline)
                     }
                     
                     NavigationLink(destination: SettingsView()) {
@@ -60,7 +58,6 @@ struct UserProfileView: View {
                                 .foregroundColor(.primary)
                         }
                         .padding()
-                        
                     }
                     .offset(y: -10)
                     
@@ -75,7 +72,6 @@ struct UserProfileView: View {
                                 .foregroundColor(.primary)
                         }
                         .padding()
-                        
                     }
                     .offset(y: -30)
                     
@@ -89,7 +85,6 @@ struct UserProfileView: View {
                                 .foregroundColor(.primary)
                         }
                         .padding()
-                        
                     }
                     .offset(y: -50)
                     
@@ -103,7 +98,6 @@ struct UserProfileView: View {
                                 .foregroundColor(.primary)
                         }
                         .padding()
-                        
                     }
                     .offset(y: -70)
                     

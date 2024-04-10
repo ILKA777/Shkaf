@@ -21,8 +21,6 @@ struct SellerTabBarViewModel: View {
     var body: some View {
         NavigationView {
             HStack(spacing: 0) {
-                
-                
                 VStack(spacing: 0) {
                     TabView {
                         SellerActiveOrdersView()
@@ -30,11 +28,8 @@ struct SellerTabBarViewModel: View {
                             .tabItem {
                                 Image(systemName: "shippingbox")
                                 Text("Заказы")
-                                    
                             }
                             .tag("Home")
-                        
-                        // Tab 2
                         
                         SellerProductsCatalogView()
                             .environmentObject(favoritesManager)
@@ -50,7 +45,6 @@ struct SellerTabBarViewModel: View {
                                 Image(systemName: "plus")
                                 Text("Создать карточку")
                             }
-                            
                         
                         SellerProfileView()
                             .environmentObject(orderManager)
@@ -62,12 +56,10 @@ struct SellerTabBarViewModel: View {
                 }
                 .frame(width: getRect().width)
             }
-           
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
         }
     }
-        
 }
 
 struct SellerTabBarView_Previews: PreviewProvider {

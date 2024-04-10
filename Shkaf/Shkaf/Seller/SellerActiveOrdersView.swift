@@ -25,7 +25,6 @@ struct SellerActiveOrdersView: View {
             }
             .navigationBarTitle(Text("Активные заказы"), displayMode: .large)
         }
-        
         .navigationBarTitleDisplayMode(.large)
         .frame(maxWidth: .infinity)
     }

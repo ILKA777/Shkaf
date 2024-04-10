@@ -37,7 +37,6 @@ struct OrganizationInfoView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray))
                 .padding([.horizontal], 24)
             
-            
             TextField("Фамилия", text: $surname)
                 .padding()
                 .frame(width: 350, height: 40)
@@ -58,8 +57,6 @@ struct OrganizationInfoView: View {
                 .font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .offset(x: 10, y: 10)
-            //.multilineTextAlignment(.leading)
-            
             
             Picker("", selection: $isMale) {
                 Text("Мужской").tag(true)
@@ -136,18 +133,10 @@ struct OrganizationInfoView: View {
                     .frame(height: 50)
                     .offset(y: 30)
             }
-            
         }
         .padding()
     }
 }
-
-struct OranizationInfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        OrganizationInfoView()
-    }
-}
-
 
 #Preview {
     OrganizationInfoView()

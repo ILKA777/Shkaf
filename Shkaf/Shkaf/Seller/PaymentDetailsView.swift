@@ -19,7 +19,6 @@ struct PaymentDetailsView: View {
     @State private var bic = ""
     @State private var swift = ""
     
-    
     var body: some View {
         NavigationView {
             Form {
@@ -34,7 +33,13 @@ struct PaymentDetailsView: View {
             .navigationBarItems(leading: Button("Отмена") {
                 showModal = false
             }, trailing: Button("Сохранить") {
-                let details =  BankDetails(bankName: benefeciaryName, accountNumber: accountNumber, inn: inn, kpp: kpp, correspondentAccount: correspondentAccount, bic: bic, swiftCode: swift)
+                let details =  BankDetails(bankName: benefeciaryName,
+                                           accountNumber: accountNumber,
+                                           inn: inn,
+                                           kpp: kpp,
+                                           correspondentAccount: correspondentAccount,
+                                           bic: bic,
+                                           swiftCode: swift)
                 requisites.append(details)
                 showModal = false
             })
@@ -42,7 +47,3 @@ struct PaymentDetailsView: View {
         }
     }
 }
-//
-//#Preview {
-//    NewDeliveryInfoView()
-//}

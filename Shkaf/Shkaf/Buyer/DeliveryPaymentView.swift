@@ -18,13 +18,11 @@ struct DeliveryPaymentView: View {
             }
             .refreshable {
                 loadDeliveries()
-                    }
+            }
             .onAppear {
                 // Загрузка данных при появлении представления
                 loadDeliveries()
             }
-            
-            
             Spacer()
         }
         .navigationBarTitle("Доставка и оплата", displayMode: .inline)
@@ -37,14 +35,12 @@ struct DeliveryPaymentView: View {
             NewDeliveryInfoView(showModal: $showingModal, didDismiss: {
                 // Обновление данных или перезагрузка представления после закрытия NewDeliveryInfoView
                 loadDeliveries()
-                    
             })
         }
     }
     
     private func loadDeliveries() {
         // Загрузка данных о доставках
-        
         deliveries = DeliveryInfoCoreDataManager.shared.fetchDeliveryInfo()
     }
 }

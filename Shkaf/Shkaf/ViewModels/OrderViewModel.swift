@@ -24,21 +24,17 @@ class OrderViewModel: ObservableObject {
     
     func placeOrder() {
         let deliveryInfo = DeliveryInfoMock(cleintName: clientName,
-                                        clientSurname: clientSurname,
-                                        clientPhone: clientPhone,
-                                        clientEmail: clientEmail,
-                                        clientCity: clientCity,
-                                        clientAddress: clientAddress)
+                                            clientSurname: clientSurname,
+                                            clientPhone: clientPhone,
+                                            clientEmail: clientEmail,
+                                            clientCity: clientCity,
+                                            clientAddress: clientAddress)
         let order = Order(
-                          total: Double(cartManager.total),
-                          productList: cartManager.products,
-                          deliveryInfo: deliveryInfo,
-                          date: Date())
+            total: Double(cartManager.total),
+            productList: cartManager.products,
+            deliveryInfo: deliveryInfo,
+            date: Date())
         orderManager.addOrder(order)
-        
-        // Call a method in the view model to handle the order placement
-        // This might involve sending the order to a server
-        print("Order Placed: \(order)")
     }
     
     func clearCart() {

@@ -23,4 +23,3 @@ var brandList: [Brand] = [Brand(categoty: "Одежда и обувь", name: "2
                           Brand(categoty: "Одежда и обувь", name: "Idol", description: "Молодой российский бренд", image: "omanko"),
                           Brand(categoty: "Одежда и обувь", name: "LoveRepublic", description: "Молодой российский бренд", image: "shu"),
                           Brand(categoty: "Одежда и обувь", name: "Aimclo", description: "Молодой российский бренд", image: "zny")]
-//let icons: [String] = ["12storeez", "fable", "gate31", "haliky", "lime", "omanko", "shu", "zny"]

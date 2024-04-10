@@ -8,43 +8,38 @@
 import SwiftUI
 
 struct ContentView: View {
-
+    
     @State private var showSplash = true
     @State private var isRegistrationViewPresented = false
     @State private var isLoginViewPresented = false
     @State private var isSellerLoginViewPresented = false
     @EnvironmentObject var sessionManager: SessionManager
     
-
     var body: some View {
-        
         if sessionManager.isLoggedIn {
             BuyerTabBarViewModel()
                 .environmentObject(CartManager())
                 .environmentObject(OrderManager())
                 .environmentObject(FavoritesManager())
         } else {
-            
             NavigationView {
                 ZStack {
-                    
                     if showSplash {
                         SplashScreenView()
                             .transition(.opacity)
                             .animation(.easeInOut(duration: 1.5))
                     } else {
                         Color.black.edgesIgnoringSafeArea(.all)
-
                         VStack {
                             Spacer()
-
+                            
                             Image("ShkafLogo")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 200, height: 200)
-
+                            
                             Spacer()
-
+                            
                             NavigationLink(destination: LoginView(), isActive: $isLoginViewPresented) {
                                 EmptyView()
                             }
@@ -61,7 +56,7 @@ struct ContentView: View {
                                     .background(.gray)
                                     .cornerRadius(10)
                             }
-
+                            
                             NavigationLink(destination: RegistrationView(), isActive: $isRegistrationViewPresented) {
                                 EmptyView()
                             }
@@ -78,7 +73,7 @@ struct ContentView: View {
                                     .cornerRadius(10)
                             }
                             .padding()
-
+                            
                             NavigationLink(destination: SellerLoginView(), isActive: $isSellerLoginViewPresented) {
                                 EmptyView()
                             }
@@ -95,7 +90,6 @@ struct ContentView: View {
                             }
                         }
                     }
-                   
                 }
                 .navigationBarHidden(true)
                 .onAppear {
@@ -107,7 +101,6 @@ struct ContentView: View {
                 }
             }
         }
-        
     }
 }
 

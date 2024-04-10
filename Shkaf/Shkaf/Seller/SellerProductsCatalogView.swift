@@ -77,7 +77,6 @@ struct SellerProductsCatalogView: View {
                 SellerProductsManager.shared.fetchProducts {
                     isLoading = false
                 }
-                
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

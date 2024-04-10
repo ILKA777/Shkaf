@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct SplashScreenView: View {
-
-   
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
@@ -20,7 +18,6 @@ struct SplashScreenView: View {
                 .frame(width: 200, height: 200)
         }
     }
-       
 }
 
 struct SplashScreenView_Previews: PreviewProvider {

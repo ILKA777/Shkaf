@@ -14,25 +14,20 @@ class CartManager: ObservableObject {
     
     func addToCart(product: Product) {
         if let index = products.firstIndex(where: { $0.product.id == product.id }) {
-            // Increase quantity if the product is already in the cart
             products[index].quantity += 1
         } else {
-            // Add new product to cart with quantity 1
             products.append(ProductWithQuantity(product: product, quantity: 1))
         }
-        
         recalculateTotal()
     }
     
     func removeFromCart(product: Product) {
         if let index = products.firstIndex(where: { $0.product.id == product.id }) {
-            // Decrease quantity or remove the product if quantity becomes zero
             if products[index].quantity > 1 {
                 products[index].quantity -= 1
             } else {
                 products.remove(at: index)
             }
-            
             recalculateTotal()
         }
     }
@@ -55,16 +50,14 @@ class CartManager: ObservableObject {
     }
     
     func decreaseQuantity(product: Product) {
-            if let index = products.firstIndex(where: { $0.product.id == product.id && $0.quantity > 0 }) {
-                // Decrease quantity
-                products[index].quantity -= 1
-                if products[index].quantity == 0 {
-                    products.remove(at: index)
-                }
-                
-                recalculateTotal()
+        if let index = products.firstIndex(where: { $0.product.id == product.id && $0.quantity > 0 }) {
+            products[index].quantity -= 1
+            if products[index].quantity == 0 {
+                products.remove(at: index)
             }
+            recalculateTotal()
         }
+    }
 }
 
 struct ProductWithQuantity: Identifiable {

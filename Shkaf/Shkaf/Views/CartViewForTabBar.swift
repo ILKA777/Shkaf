@@ -41,7 +41,6 @@ struct CartViewForTabBar: View {
                     }
                     .padding()
                     .sheet(isPresented: $isPlacingOrder) {
-                        // Present the OrderView as a sheet
                         OrderView(viewModel: orderViewModel, isPlacingOrder: $isPlacingOrder)
                             .environmentObject(OrderViewModel(cartManager: cartManager, orderManager: orderManager))
                     }

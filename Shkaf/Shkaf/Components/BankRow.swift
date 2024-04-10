@@ -15,11 +15,11 @@ struct BankRow: View {
             Text("Наименование банка: \(bankDetails.bankName)")
                 .font(.system(size: 25))
                 .bold()
-                
+            
             Text("Номер счёта: \(bankDetails.accountNumber)")
                 .font(.system(size: 20))
                 .bold()
-                
+            
             Text("ИНН: \(bankDetails.inn)")
                 .font(.system(size: 20))
                 .bold()
@@ -43,7 +43,7 @@ struct BankRow: View {
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(uiColor: .CustomGreen())))
+            .fill(Color(uiColor: .CustomGreen())))
         .padding(.horizontal, 0)
     }
 }

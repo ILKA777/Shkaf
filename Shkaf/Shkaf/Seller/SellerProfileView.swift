@@ -20,11 +20,8 @@ struct SellerProfileView: View {
         NavigationView {
             VStack(alignment: .leading) {
                 // Верхняя часть с кружочком и фото
-                
                 HStack {
-                    
                     Button(action: {
-                        // Action to open image picker
                         isSourceSelectionSheetPresented = true
                     }) {
                         if let selectedImage = selectedImage {
@@ -93,7 +90,6 @@ struct SellerProfileView: View {
                                 .foregroundColor(.primary)
                         }
                         .padding()
-                        
                     }
                     .offset(y: -10)
                     
@@ -108,7 +104,6 @@ struct SellerProfileView: View {
                                 .foregroundColor(.primary)
                         }
                         .padding()
-                        
                     }
                     .offset(y: -30)
                     
@@ -122,7 +117,6 @@ struct SellerProfileView: View {
                                 .foregroundColor(.primary)
                         }
                         .padding()
-                        
                     }
                     .offset(y: -50)
                     
@@ -136,12 +130,10 @@ struct SellerProfileView: View {
                                 .foregroundColor(.primary)
                         }
                         .padding()
-                        
                     }
                     .offset(y: -70)
                     
                     Button(action: {
-                        //isActive = true
                     }) {
                         HStack {
                             Text("Выйти из профиля")

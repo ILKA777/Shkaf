@@ -36,9 +36,6 @@ struct SellerRegistrationView: View {
                 .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.gray))
                 .padding([.horizontal], 24)
             
-            
-            // Spacer()
-            
             NavigationLink(destination: SellerTabBarViewModel().navigationBarHidden(true), isActive: $isTabBarViewActive) {
                 EmptyView()
             }
@@ -59,13 +56,6 @@ struct SellerRegistrationView: View {
         .padding()
     }
 }
-
-struct SellerRegistrationView_Previews: PreviewProvider {
-    static var previews: some View {
-        SellerRegistrationView()
-    }
-}
-
 
 #Preview {
     SellerRegistrationView()

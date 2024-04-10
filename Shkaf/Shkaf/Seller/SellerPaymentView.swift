@@ -18,7 +18,6 @@ struct SellerPaymentView: View {
                     BankRow(bankDetails: details)
                 }
             }
-            
             Spacer()
         }
         .navigationBarTitle("Реквизиты", displayMode: .inline)
@@ -38,4 +37,3 @@ struct SellerPaymentView_Previews: PreviewProvider {
         SellerPaymentView()
     }
 }
-

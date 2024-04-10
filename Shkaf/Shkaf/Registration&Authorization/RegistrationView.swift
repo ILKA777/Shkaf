@@ -15,7 +15,6 @@ struct RegistrationView: View {
     @State private var isPasswordVisible = false
     @State private var isSecondPasswordVisible = false
     
-    
     var body: some View {
         VStack(alignment: .center) {
             Text("Регистрация")

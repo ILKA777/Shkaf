@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BrandsCatalogView: View {
-
     @State private var selectedBrand: Brand?
     @State private var isShowingSearch = false
     @State private var searchText = ""
@@ -56,7 +55,6 @@ struct BrandsCatalogView: View {
         }
     }
 }
-
 
 #Preview {
     BrandsCatalogView()

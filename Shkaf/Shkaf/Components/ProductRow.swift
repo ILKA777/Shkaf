@@ -9,31 +9,30 @@ import SwiftUI
 
 struct ProductRow: View {
     @EnvironmentObject var cartManager: CartManager
-    var productWithQuantity: ProductWithQuantity // Use ProductWithQuantity instead of Product
+    var productWithQuantity: ProductWithQuantity
     
     var body: some View {
         HStack(spacing: 20) {
             AsyncImage(url: URL(string: productWithQuantity.product.image)!) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView()
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .cornerRadius(10)
-                                    .frame(width: 50)
-                                    
-                            case .failure:
-                                Image("ShkafLogo")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .foregroundColor(.gray)
-                                    .cornerRadius(10)
-                                    .frame(width: 50)
-                                   
-                            }
-                        }
+                switch phase {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(10)
+                        .frame(width: 50)
+                    
+                case .failure:
+                    Image("ShkafLogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(.gray)
+                        .cornerRadius(10)
+                        .frame(width: 50)
+                }
+            }
             VStack(alignment: .leading, spacing: 10) {
                 Text(productWithQuantity.product.category)
                     .font(.caption)
@@ -48,7 +47,7 @@ struct ProductRow: View {
             
             HStack(spacing: 10) {
                 Button(action: {
-                    cartManager.decreaseQuantity(product: productWithQuantity.product) // Pass product to decreaseQuantity
+                    cartManager.decreaseQuantity(product: productWithQuantity.product)
                 }) {
                     Image(systemName: "minus.circle")
                         .foregroundColor(.red)
@@ -57,7 +56,7 @@ struct ProductRow: View {
                 Text("\(productWithQuantity.quantity)")
                 
                 Button(action: {
-                    cartManager.addToCart(product: productWithQuantity.product) // Pass product to addToCart
+                    cartManager.addToCart(product: productWithQuantity.product)
                 }) {
                     Image(systemName: "plus.circle")
                         .foregroundColor(.green)
@@ -97,10 +96,3 @@ struct QuantityCounter: View {
         }
     }
 }
-
-
-
-//#Preview {
-//    ProductRow(product: productList[3])
-//        .environmentObject(CartManager())
-//}

@@ -14,7 +14,7 @@ struct SellerProductsView: View {
     @EnvironmentObject var cartManager: CartManager
     @EnvironmentObject var favoritesManager: FavoritesManager
     
-    @State private var searchText = "" // To hold the search text
+    @State private var searchText = ""
     
     var body: some View {
         VStack {

@@ -22,13 +22,11 @@ struct OrderRow: View {
             Text("Заказ №\(order.id)")
                 .font(.system(size: 18))
                 .bold()
-                
             
-                
             Text("Стоимость: \(order.total, specifier: "%.2f") руб.")
                 .font(.system(size: 16))
                 .bold()
-                
+            
             Text("Дата: \(dateFormatter.string(from: order.date))")
                 .font(.system(size: 14))
                 .bold()
@@ -36,14 +34,7 @@ struct OrderRow: View {
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(uiColor: .CustomGreen())))
+            .fill(Color(uiColor: .CustomGreen())))
         .padding(.horizontal, 0)
     }
 }
-
-
-
-
-//#Preview {
-//    OrderRow(order: Order(total: 100, date: Date()))
-//}

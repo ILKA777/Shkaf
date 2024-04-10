@@ -13,9 +13,7 @@ struct SideMenu: View {
     @EnvironmentObject var favoritesManager: FavoritesManager
     @EnvironmentObject var orderManager: OrderManager
     
-    
     var body: some View {
-        
         VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 12) {
                 Image("cat-face")
@@ -28,14 +26,12 @@ struct SideMenu: View {
                     .font(.title2.bold())
                 Text("@\(UserManager.shared.currentUser.username ?? "shkaf")")
                     .font(.callout)
-                
             }
             .padding(.horizontal)
             .padding(.leading)
             
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 45) {
-                    
                     NavigationLink(destination: UserProfileView().environmentObject(favoritesManager)) {
                         HStack(spacing: 14) {
                             Image(systemName: "person.crop.circle")
@@ -135,14 +131,11 @@ struct SideMenu: View {
                         }
                         .padding()
                     }
-                    
-                    
                 }
                 .padding()
                 .padding(.leading)
                 .padding(.top, 35)
             }
-            
         }
         .padding(.vertical)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -163,7 +156,6 @@ struct SideMenu: View {
             
         } label: {
             HStack(spacing: 14) {
-                
                 Image(systemName: image)
                     .resizable()
                     .renderingMode(.template)

@@ -107,7 +107,7 @@ struct SellerProductDetailView: View {
                 }
             }
             .padding()
-        
+            
             Spacer()
         }
         .onAppear {
@@ -120,41 +120,39 @@ struct SellerProductDetailView: View {
     }
     
     private func deleteProduct(productId: Int) {
-            guard let url = URL(string: "http://localhost:8090/products/\(productId)") else {
-                print("Invalid URL")
+        guard let url = URL(string: "http://localhost:8090/products/\(productId)") else {
+            print("Invalid URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        
+        guard let userToken = UserManager.shared.currentUser.userToken else {
+            return
+        }
+        request.addValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
                 return
             }
             
-            var request = URLRequest(url: url)
-            request.httpMethod = "DELETE"
-            
-            // Set JWT token in the Authorization header if required
-             guard let userToken = UserManager.shared.currentUser.userToken else {
-                 return
-             }
-             request.addValue("Bearer \(userToken)", forHTTPHeaderField: "Authorization")
-            
-            URLSession.shared.dataTask(with: request) { data, response, error in
-                if let error = error {
-                    print("Error: \(error.localizedDescription)")
-                    return
-                }
+            if let httpResponse = response as? HTTPURLResponse {
+                print("HTTP Status Code: \(httpResponse.statusCode)")
                 
-                if let httpResponse = response as? HTTPURLResponse {
-                    print("HTTP Status Code: \(httpResponse.statusCode)")
-                    
-                    if httpResponse.statusCode == 200 {
-                        print("Product successfully deleted!")
-                        DispatchQueue.main.async {
-                            isWithdrawn = true
-                        }
-                    } else {
-                        print("Failed to delete product. HTTP Status Code: \(httpResponse.statusCode)")
-                        // Handle failure action if needed
+                if httpResponse.statusCode == 200 {
+                    print("Product successfully deleted!")
+                    DispatchQueue.main.async {
+                        isWithdrawn = true
                     }
+                } else {
+                    print("Failed to delete product. HTTP Status Code: \(httpResponse.statusCode)")
                 }
-            }.resume()
-        }
+            }
+        }.resume()
+    }
 }
 
 struct SellerProductDetailView_Previews: PreviewProvider {

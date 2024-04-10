@@ -8,17 +8,14 @@
 import SwiftUI
 
 struct SettingsView: View {
-    
     @State private var isRussian = true
     @State private var notificationsEnabled = true
     
     var body: some View {
         VStack {
             Text("Язык:")
-                //.font(.headline)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .offset(x: 20, y: 10)
-            
             
             Picker("", selection: $isRussian) {
                 Text("Русский").tag(true)
@@ -38,7 +35,6 @@ struct SettingsView: View {
                     .foregroundColor(.red)
                     .padding()
             }
-            
             Spacer()
         }
         .navigationBarTitle("Настройки", displayMode: .large)

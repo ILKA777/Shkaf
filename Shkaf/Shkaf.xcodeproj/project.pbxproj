@@ -17,7 +17,6 @@
 		09084CE32BB01BCC001E856A /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09084CE22BB01BCC001E856A /* OrderViewModel.swift */; };
 		09084CE52BB01BE2001E856A /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09084CE42BB01BE2001E856A /* OrderView.swift */; };
 		09084CE72BB021D7001E856A /* OrderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09084CE62BB021D7001E856A /* OrderManager.swift */; };
-		090BD5D82BC4173400407CEE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BD5D72BC4173400407CEE /* ActivityIndicator.swift */; };
 		090BD5DA2BC42BA700407CEE /* SellerAuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BD5D92BC42BA700407CEE /* SellerAuthViewModel.swift */; };
 		090BD5DC2BC42E0C00407CEE /* SellerProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090BD5DB2BC42E0C00407CEE /* SellerProductDetailView.swift */; };
 		094EAA4D2B931CF4006F4399 /* BuyerTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 094EAA4C2B931CF4006F4399 /* BuyerTabBarViewModel.swift */; };
@@ -108,7 +107,6 @@
 		09084CE22BB01BCC001E856A /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		09084CE42BB01BE2001E856A /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		09084CE62BB021D7001E856A /* OrderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderManager.swift; sourceTree = "<group>"; };
-		090BD5D72BC4173400407CEE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		090BD5D92BC42BA700407CEE /* SellerAuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerAuthViewModel.swift; sourceTree = "<group>"; };
 		090BD5DB2BC42E0C00407CEE /* SellerProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerProductDetailView.swift; sourceTree = "<group>"; };
 		094EAA4C2B931CF4006F4399 /* BuyerTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyerTabBarViewModel.swift; sourceTree = "<group>"; };
@@ -358,7 +356,6 @@
 				09DFBAAF2BB0443100D82E5B /* SellerOrderRow.swift */,
 				09DFBAB32BB0489200D82E5B /* ProductRowForOrders.swift */,
 				09DFBAB72BB05AE400D82E5B /* SellerProductCard.swift */,
-				090BD5D72BC4173400407CEE /* ActivityIndicator.swift */,
 				098159B12BC58EE000E045BE /* BankRow.swift */,
 			);
 			path = Components;
@@ -506,7 +503,6 @@
 				09E887B52BA708C900E41A0B /* DeliveryRow.swift in Sources */,
 				09A7CA702B949078005AAA2E /* CartViewForTabBar.swift in Sources */,
 				09A7CA662B946F7F005AAA2E /* NotificationsView.swift in Sources */,
-				090BD5D82BC4173400407CEE /* ActivityIndicator.swift in Sources */,
 				0908408C2B7A5EE200959103 /* UIColor + Extension.swift in Sources */,
 				0957EB5F2BB6AFFE00A8BD4A /* BuyerAuthViewModel.swift in Sources */,
 				09A7CA752B949465005AAA2E /* ProductRowFavorites.swift in Sources */,

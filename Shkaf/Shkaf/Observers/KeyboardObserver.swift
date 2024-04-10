@@ -30,7 +30,6 @@ struct KeyboardAwareModifier: ViewModifier {
     }
 }
 
-
 extension View {
     func keyboardAwarePadding() -> some View {
         ModifiedContent(content: self, modifier: KeyboardAwareModifier())

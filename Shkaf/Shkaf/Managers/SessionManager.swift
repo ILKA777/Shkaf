@@ -17,12 +17,11 @@ class SessionManager: ObservableObject {
     
     func logout() {
         // Очистка данных или любые другие операции при выходе
-        // coreDataManager.clearCoreData() // Раскомментируйте, если нужно очистить Core Data
         isLoggedIn = false
         
         // Находим окно приложения
         if let window = UIApplication.shared.windows.first {
-            // Создаем новый экземпляр представления для входа в систему (замените на ваш экран входа в систему)
+            // Создаем новый экземпляр представления для входа в систему
             let rootView = ContentView()
                 .environmentObject(SessionManager())
             

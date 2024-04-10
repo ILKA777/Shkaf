@@ -14,30 +14,30 @@ struct ProductRowFavorites: View {
     var body: some View {
         HStack(spacing: 20) {
             AsyncImage(url: URL(string: product.image)!) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView()
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .cornerRadius(10)
-                                    .frame(width: 50)
-                                    .scaledToFit()
-                            case .failure:
-                                Image("ShkafLogo")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .foregroundColor(.gray)
-                                    .cornerRadius(10)
-                                    .frame(width: 50)
-                            }
-                        }
+                switch phase {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .cornerRadius(10)
+                        .frame(width: 50)
+                        .scaledToFit()
+                case .failure:
+                    Image("ShkafLogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .foregroundColor(.gray)
+                        .cornerRadius(10)
+                        .frame(width: 50)
+                }
+            }
             
             VStack(alignment: .leading, spacing: 10) {
                 Text(product.category)
-                               .font(.caption)
-                               .foregroundColor(.gray)
+                    .font(.caption)
+                    .foregroundColor(.gray)
                 Text(product.name)
                     .bold()
                 
@@ -56,8 +56,3 @@ struct ProductRowFavorites: View {
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
-
-//#Preview {
-//    ProductRow(product: productList[3])
-//        .environmentObject(FavoritesManager())
-//}

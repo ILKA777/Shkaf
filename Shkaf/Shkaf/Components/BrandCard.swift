@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct BrandCard: View {
-   
     var brand: Brand
     
     var body: some View {
@@ -27,11 +26,9 @@ struct BrandCard: View {
                 .frame(width: 180, alignment: .leading)
                 .background(.ultraThinMaterial)
                 .cornerRadius(20)
-                
             }
             .frame(width: 180, height: 220)
             .shadow(radius: 3)
-            
         }
     }
 }

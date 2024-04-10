@@ -19,25 +19,25 @@ struct ProductDetailView: View {
         VStack(spacing: 20) {
             // Фотография товара
             AsyncImage(url: URL(string: product.image)!) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView()
-                                    .frame(height: 400)
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(height: 400)
-                                    .clipped()
-                            case .failure:
-                                Image("ShkafLogo")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .foregroundColor(.gray)
-                                    .frame(height: 400)
-                                    .clipped()
-                            }
-                        }
+                switch phase {
+                case .empty:
+                    ProgressView()
+                        .frame(height: 400)
+                case .success(let image):
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(height: 400)
+                        .clipped()
+                case .failure:
+                    Image("ShkafLogo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .foregroundColor(.gray)
+                        .frame(height: 400)
+                        .clipped()
+                }
+            }
             
             // Описание товара
             VStack(alignment: .leading, spacing: 10) {

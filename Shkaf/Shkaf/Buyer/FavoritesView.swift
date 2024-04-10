@@ -11,7 +11,6 @@ struct FavoritesView: View {
     @EnvironmentObject var favoritesManager: FavoritesManager
     
     var body: some View {
-        
         NavigationView {
             ScrollView {
                 if favoritesManager.products.count > 0 {

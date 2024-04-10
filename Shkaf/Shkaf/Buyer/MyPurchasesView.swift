@@ -12,7 +12,7 @@ struct MyPurchasesView: View {
     @EnvironmentObject var orderManager: OrderManager
     
     var body: some View {
-        NavigationView { 
+        NavigationView {
             ScrollView {
                 LazyVStack(spacing: 10) {
                     ForEach(orderManager.orders, id: \.id) { order in

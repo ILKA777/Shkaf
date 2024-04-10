@@ -15,7 +15,6 @@ struct NotificationsView: View {
             Text("Здесь будут твои уведомления")
                 .font(.headline)
                 .padding()
-            
             Spacer()
         }
         .navigationBarTitle("Уведомления", displayMode: .inline)

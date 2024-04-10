@@ -19,7 +19,7 @@ struct LoginView: View {
                 .padding(.bottom, 20)
                 .bold()
                 .offset(y: -120)
-
+            
             TextField("Введите логин", text: $viewModel.userName)
                 .padding()
                 .frame(width: 350, height: 50)
@@ -29,7 +29,7 @@ struct LoginView: View {
                 .padding([.horizontal], 24)
                 .offset(y: -120)
                 .ignoresSafeArea(.keyboard, edges: .all)
-
+            
             ZStack(alignment: .trailing) {
                 if isPasswordVisible {
                     TextField("Введите пароль", text: $viewModel.password)
@@ -58,7 +58,6 @@ struct LoginView: View {
                 .padding(.trailing, 10) // Отступ кнопки от правого края
             }
             .offset(y: -110)
-        
             
             Button(action: {
                 viewModel.authUser()
@@ -73,19 +72,19 @@ struct LoginView: View {
             .offset(y: -80)
             
             .onReceive(viewModel.$isAuthSuccessful) { authSuccessful in
-                        if authSuccessful {
-                            // Переход на BuyerTabBarViewModel после успешной регистрации
-                            isTabBarViewActive = true
-                        }
-                    }
-                    .background(
-                        NavigationLink(
-                            destination: BuyerTabBarViewModel().navigationBarHidden(true),
-                            isActive: $isTabBarViewActive
-                        ) {
-                            EmptyView()
-                        }
-                    )
+                if authSuccessful {
+                    // Переход на BuyerTabBarViewModel после успешной регистрации
+                    isTabBarViewActive = true
+                }
+            }
+            .background(
+                NavigationLink(
+                    destination: BuyerTabBarViewModel().navigationBarHidden(true),
+                    isActive: $isTabBarViewActive
+                ) {
+                    EmptyView()
+                }
+            )
         }
         .padding()
         .ignoresSafeArea(.keyboard, edges: .all)
@@ -97,4 +96,3 @@ struct LoginView_Previews: PreviewProvider {
         LoginView()
     }
 }
-

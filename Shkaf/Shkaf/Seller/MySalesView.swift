@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct MySalesView: View {
-    // Пример списка заказов
     @EnvironmentObject var orderManager: OrderManager
     
     var body: some View {

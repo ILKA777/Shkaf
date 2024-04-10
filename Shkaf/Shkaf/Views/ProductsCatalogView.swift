@@ -12,11 +12,11 @@ struct ProductsCatalogView: View {
     @EnvironmentObject var orderManager: OrderManager
     @EnvironmentObject var favoritesManager: FavoritesManager
     @Binding var showMenu: Bool
-    @State private var isLoading = false
     
-    @State private var isShowingSearch = false // To toggle search bar visibility
-    @State private var searchText = "" // To hold the search text
-    @State private var selectedProduct: Product? // Track selected product for navigation
+    @State private var isLoading = false
+    @State private var isShowingSearch = false
+    @State private var searchText = ""
+    @State private var selectedProduct: Product?
     
     var columns = [GridItem(.adaptive(minimum: 160), spacing: 20)]
     
@@ -89,5 +89,4 @@ struct ProductsCatalogView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
 }

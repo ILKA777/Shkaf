@@ -67,9 +67,6 @@ class RegistrationViewModel: ObservableObject {
                     if httpResponse.statusCode == 200 {
                         if let token = String(data: data, encoding: .utf8) {
                             // Сохраняем токен в UserDefaults
-//                            UserDefaults.standard.set(token, forKey: "userToken")
-//                            UserDefaults.standard.set(self.userName, forKey: "userName")
-//                            UserDefaults.standard.set(self.email, forKey: "email")
                             UserManager.shared.createUser(username: self.userName, userToken: token)
                             print(token)
                             // Устанавливаем isRegistrationSuccessful на главном потоке

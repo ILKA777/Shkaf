@@ -14,40 +14,40 @@ struct ProductCard: View {
     var product: Product
     
     var priceFormatter: NumberFormatter = {
-            let formatter = NumberFormatter()
-            formatter.minimumFractionDigits = 0
-            formatter.maximumFractionDigits = 1
-            return formatter
-        }()
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 1
+        return formatter
+    }()
     
     var price = ""
     var body: some View {
         ZStack(alignment: .topTrailing) {
             ZStack(alignment: .bottom) {
                 AsyncImage(url: URL(string: product.image)!) { phase in
-                                switch phase {
-                                case .empty:
-                                    ProgressView()
-                                case .success(let image):
-                                    image
-                                        .resizable()
-                                        .cornerRadius(20)
-                                        .frame(width: 180)
-                                        .scaledToFit()
-                                case .failure:
-                                    Image("ShkafLogo")
-                                        .resizable()
-                                        .foregroundColor(.gray)
-                                        .cornerRadius(20)
-                                        .frame(width: 180)
-                                }
-                            }
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .cornerRadius(20)
+                            .frame(width: 180)
+                            .scaledToFit()
+                    case .failure:
+                        Image("ShkafLogo")
+                            .resizable()
+                            .foregroundColor(.gray)
+                            .cornerRadius(20)
+                            .frame(width: 180)
+                    }
+                }
                 VStack(alignment: .leading) {
                     Text(product.name)
                         .bold()
                     
                     Text(String(format: "%.1f ₽", product.price))
-                                            .font(.caption)
+                        .font(.caption)
                 }
                 .padding()
                 .frame(width: 180, alignment: .leading)
@@ -72,14 +72,13 @@ struct ProductCard: View {
                         .padding(10)
                         .foregroundColor(.white)
                         .background(favoritesManager.isProductInFavorites(product: product) == true ? .gray : .red)
-
-
+                    
+                    
                         .cornerRadius(50)
                         .padding(.leading, 10)
                     
                 }
                 .offset(x: -40)
-                
                 
                 Button {
                     cartManager.addToCart(product: product)
@@ -92,14 +91,6 @@ struct ProductCard: View {
                         .padding()
                 }
             }
-            
         }
     }
 }
-
-//struct ProductCard_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ProductCard(product: productList[0])
-//            .environmentObject(CartManager())
-//    }
-//}

@@ -14,46 +14,45 @@ enum ProductStatus: String {
 }
 
 struct SellerProductCard: View {
-
     var product: Product
     var status: ProductStatus
     @State private var isLoading = false
     
     var priceFormatter: NumberFormatter = {
-            let formatter = NumberFormatter()
-            formatter.minimumFractionDigits = 0
-            formatter.maximumFractionDigits = 1
-            return formatter
-        }()
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 1
+        return formatter
+    }()
     
     var price = ""
     var body: some View {
         ZStack(alignment: .topTrailing) {
             ZStack(alignment: .bottom) {
                 AsyncImage(url: URL(string: product.image)!) { phase in
-                                switch phase {
-                                case .empty:
-                                    ProgressView()
-                                case .success(let image):
-                                    image
-                                        .resizable()
-                                        .cornerRadius(20)
-                                        .frame(width: 180)
-                                        .scaledToFit()
-                                case .failure:
-                                    Image("ShkafLogo")
-                                        .resizable()
-                                        .foregroundColor(.gray)
-                                        .cornerRadius(20)
-                                        .frame(width: 180)
-                                }
-                            }
+                    switch phase {
+                    case .empty:
+                        ProgressView()
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .cornerRadius(20)
+                            .frame(width: 180)
+                            .scaledToFit()
+                    case .failure:
+                        Image("ShkafLogo")
+                            .resizable()
+                            .foregroundColor(.gray)
+                            .cornerRadius(20)
+                            .frame(width: 180)
+                    }
+                }
                 VStack(alignment: .leading) {
                     Text(product.name)
                         .bold()
                     
                     Text(String(format: "%.1f ₽", product.price))
-                                            .font(.caption)
+                        .font(.caption)
                 }
                 .padding()
                 .frame(width: 180, alignment: .leading)
@@ -66,14 +65,12 @@ struct SellerProductCard: View {
             
             HStack {
                 Text(status.rawValue)
-                                    .padding(8)
-                                    .foregroundColor(.white)
-                                    .background(statusColor)
-                                    .cornerRadius(10)
-                                    .padding([.top, .trailing], 10)
+                    .padding(8)
+                    .foregroundColor(.white)
+                    .background(statusColor)
+                    .cornerRadius(10)
+                    .padding([.top, .trailing], 10)
             }
-                
-            
         }
         .onAppear {
             // Вызываем fetchProducts при загрузке SellerProductsCatalogView
@@ -85,15 +82,15 @@ struct SellerProductCard: View {
     }
     
     var statusColor: Color {
-            switch status {
-            case .forSale:
-                return .green
-            case .underModeration:
-                return .orange
-            case .soldOut:
-                return .red
-            }
+        switch status {
+        case .forSale:
+            return .green
+        case .underModeration:
+            return .orange
+        case .soldOut:
+            return .red
         }
+    }
 }
 
 struct SellerProductCard_Previews: PreviewProvider {

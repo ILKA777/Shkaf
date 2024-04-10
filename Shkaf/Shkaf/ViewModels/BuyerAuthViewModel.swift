@@ -51,7 +51,6 @@ class BuyerAuthViewModel: ObservableObject {
                             // Устанавливаем isRegistrationSuccessful на главном потоке
                             self.isAuthSuccessful = true
                             SessionManager.shared.login()
-                            
                         }
                         
                     } else if httpResponse.statusCode == 403 {
@@ -67,4 +66,3 @@ class BuyerAuthViewModel: ObservableObject {
         }.resume()
     }
 }
-

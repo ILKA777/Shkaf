@@ -12,7 +12,7 @@ struct SellerLoginView: View {
     @State private var isTabBarViewActive = false
     var body: some View {
         VStack(alignment: .center) {
- 
+            
             Text("Войти как продавец")
                 .font(.largeTitle)
                 .padding(.bottom, 20)
