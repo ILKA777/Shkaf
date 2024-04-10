@@ -31,7 +31,7 @@ struct ProductsCatalogView: View {
                         .padding(.horizontal)
                 }
                 
-                BrandsCarouselView()
+                BrandsCarouselView(brandList: brandList)
                     .padding(.bottom)
                 if isLoading {
                     ProgressView()
@@ -57,11 +57,11 @@ struct ProductsCatalogView: View {
             .navigationTitle(Text("Shkaf"))
             .navigationBarItems(leading:
                                     Button(action: {
-                                        withAnimation { showMenu.toggle() }
-                                    }) {
-                                        Image(systemName: "line.horizontal.3")
-                                            .imageScale(.large)
-                                    }
+                withAnimation { showMenu.toggle() }
+            }) {
+                Image(systemName: "line.horizontal.3")
+                    .imageScale(.large)
+            }
             )
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -75,8 +75,8 @@ struct ProductsCatalogView: View {
                     NavigationLink(destination: CartView()
                         .environmentObject(cartManager)
                         .environmentObject(OrderViewModel(cartManager: cartManager, orderManager: orderManager))) {
-                        CartButton(numberOfProducts: cartManager.totalCount)
-                    }
+                            CartButton(numberOfProducts: cartManager.totalCount)
+                        }
                 }
             }
             .onAppear {
@@ -89,5 +89,5 @@ struct ProductsCatalogView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-        
+    
 }

@@ -65,12 +65,19 @@ struct SellerProductsCatalogView: View {
                     }
                 }
             }
+            .refreshable {
+                isLoading = true
+                SellerProductsManager.shared.fetchProducts {
+                    isLoading = false
+                }
+            }
             .onAppear {
                 // Вызываем fetchProducts при загрузке SellerProductsCatalogView
                 isLoading = true
                 SellerProductsManager.shared.fetchProducts {
                     isLoading = false
                 }
+                
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

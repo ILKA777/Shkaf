@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct SellerPaymentView: View {
-    @State private var deliveries = [DeliveryInfo]()
+    @State private var requisites = [BankDetails]()
     @State private var showingModal = false
     
     var body: some View {
         VStack {
             ScrollView {
-                ForEach(deliveries) { deliveryInfo in
-                    DeliveryRow(deliveryInfo: deliveryInfo)
+                ForEach(requisites) { details in
+                    BankRow(bankDetails: details)
                 }
             }
             
@@ -28,7 +28,7 @@ struct SellerPaymentView: View {
             Image(systemName: "plus")
         })
         .sheet(isPresented: $showingModal) {
-            PaymentDetailsView(showModal: $showingModal)
+            PaymentDetailsView(showModal: $showingModal, requisites: $requisites)
         }
     }
 }

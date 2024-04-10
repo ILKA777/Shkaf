@@ -107,27 +107,7 @@ struct SellerProductDetailView: View {
                 }
             }
             .padding()
-            
-            // Cart Navigation
-            if isAddedToCart {
-                NavigationLink(destination: CartView().environmentObject(cartManager).environmentObject(OrderViewModel(cartManager: cartManager, orderManager: orderManager)), isActive: $isCartViewPresented) {
-                    EmptyView()
-                }
-                .isDetailLink(false)
-                
-                Button(action: {
-                    isCartViewPresented = true
-                }) {
-                    Text("Перейти в корзину")
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
-                        .background(Color.gray)
-                        .cornerRadius(10)
-                }
-                .padding()
-            }
-            
+        
             Spacer()
         }
         .onAppear {

@@ -67,7 +67,7 @@ class SellerProductsManager: ObservableObject {
                     self.productList = products.map {
                         Product(localId: $0.id,
                                 category: "Одежда",
-                                name: $0.title,
+                                seller: $0.seller, name: $0.title,
                                 description: $0.description,
                                 image: $0.imageUrl,
                                 price: $0.price)
@@ -80,7 +80,7 @@ class SellerProductsManager: ObservableObject {
     }
     
     func addProduct(category: String, name: String, description: String, image: String, price: Double) {
-        let newProduct = Product(category: category, name: name, description: description, image: image, price: price)
+        let newProduct = Product(category: category, seller: "селлер", name: name, description: description, image: image, price: price)
         productList.append(newProduct)
     }
 }

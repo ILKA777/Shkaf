@@ -22,8 +22,8 @@ class OrderManager: ObservableObject {
 }
 
 // Create two mock orders
-let mockProduct1 = Product(id: UUID(), category: "Аксессуар", name: "Шапка жёлтая", description: "100% шерсть", image: "https://friendfunction.ru/upload/iblock/7ea/oe9wj35euge1a7307fsrk45f6v20xsf8/shapki_friend_function_119.jpg", price: 1300.0)
-let mockProduct2 = Product(id: UUID(), category: "Одежда", name: "Футболка", description: "100% злопок", image: "https://friendfunction.ru/upload/iblock/7ea/oe9wj35euge1a7307fsrk45f6v20xsf8/shapki_friend_function_119.jpg", price: 2000.0)
+let mockProduct1 = Product(id: UUID(), category: "Аксессуар", seller: "селлер", name: "Шапка жёлтая", description: "100% шерсть", image: "https://friendfunction.ru/upload/iblock/7ea/oe9wj35euge1a7307fsrk45f6v20xsf8/shapki_friend_function_119.jpg", price: 1300.0)
+let mockProduct2 = Product(id: UUID(), category: "Одежда", seller: "селлер", name: "Футболка", description: "100% злопок", image: "https://friendfunction.ru/upload/iblock/7ea/oe9wj35euge1a7307fsrk45f6v20xsf8/shapki_friend_function_119.jpg", price: 2000.0)
 
 let mockDeliveryInfo1 = DeliveryInfoMock(cleintName: "John", clientSurname: "Doe", clientPhone: "123456789", clientEmail: "john@example.com", clientCity: "City", clientAddress: "Address")
 let mockDeliveryInfo2 = DeliveryInfoMock(cleintName: "Jane", clientSurname: "Doe", clientPhone: "987654321", clientEmail: "jane@example.com", clientCity: "City", clientAddress: "Address")

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PaymentDetailsView: View {
     @Binding var showModal: Bool
-    //@Binding var deliveries: [DeliveryInfo]
+    @Binding var requisites: [BankDetails]
     
     @State private var benefeciaryName = ""
     @State private var accountNumber = ""
@@ -27,15 +27,15 @@ struct PaymentDetailsView: View {
                 TextField("Номер счёта", text: $accountNumber)
                 TextField("ИНН", text: $inn)
                 TextField("КПП", text: $kpp)
-                TextField("Корреспонденский счёт", text: $correspondentAccount)
+                TextField("Корреспондентский счёт", text: $correspondentAccount)
                 TextField("БИК банка", text: $bic)
                 TextField("Swift", text: $swift)
             }
             .navigationBarItems(leading: Button("Отмена") {
                 showModal = false
             }, trailing: Button("Сохранить") {
-//                let newDelivery = DeliveryInfo(cleintName: clientName, clientSurname: clientSurname, clientPhone: clientPhone, clientEmail: clientEmail, clientCity: clientCity, clientAddress: clientAddress)
-                //deliveries.append(newDelivery)
+                let details =  BankDetails(bankName: benefeciaryName, accountNumber: accountNumber, inn: inn, kpp: kpp, correspondentAccount: correspondentAccount, bic: bic, swiftCode: swift)
+                requisites.append(details)
                 showModal = false
             })
             .navigationTitle("Реквизиты")
